@@ -79,3 +79,76 @@ parser.add_argument('--negative_sample_size', type=int, default=10)
 # Trainer
 ################
 # optimization #
+parser.add_argument('--device', type=str, default='cuda', choices=['cpu', 'cuda'])
+parser.add_argument('--num_epochs', type=int, default=500)
+parser.add_argument('--optimizer', type=str, default='AdamW', choices=['AdamW', 'Adam'])
+parser.add_argument('--weight_decay', type=float, default=None)
+parser.add_argument('--adam_epsilon', type=float, default=1e-9)
+parser.add_argument('--momentum', type=float, default=None)
+parser.add_argument('--lr', type=float, default=0.001)
+parser.add_argument('--max_grad_norm', type=float, default=5.0)
+parser.add_argument('--enable_lr_schedule', type=bool, default=True)
+parser.add_argument('--decay_step', type=int, default=10000)
+parser.add_argument('--gamma', type=float, default=1)
+parser.add_argument('--enable_lr_warmup', type=bool, default=True)
+parser.add_argument('--warmup_steps', type=int, default=100)
+
+# evaluation #
+parser.add_argument('--val_strategy', type=str, default='iteration', choices=['epoch', 'iteration'])
+parser.add_argument('--val_iterations', type=int, default=500)  # only for iteration val_strategy
+parser.add_argument('--early_stopping', type=bool, default=True)
+parser.add_argument('--early_stopping_patience', type=int, default=20)
+parser.add_argument('--metric_ks', nargs='+', type=int, default=[1, 5, 10, 20, 50])
+parser.add_argument('--rerank_metric_ks', nargs='+', type=int, default=[1, 5, 10])
+parser.add_argument('--best_metric', type=str, default='Recall@10')
+parser.add_argument('--rerank_best_metric', type=str, default='NDCG@10')
+parser.add_argument('--use_wandb', type=bool, default=False)
+
+################
+# Retriever Model
+################
+parser.add_argument('--model_code', type=str, default=None)
+parser.add_argument('--bert_max_len', type=int, default=50)
+parser.add_argument('--bert_hidden_units', type=int, default=64)
+parser.add_argument('--bert_num_blocks', type=int, default=2)
+parser.add_argument('--bert_num_heads', type=int, default=2)
+parser.add_argument('--bert_head_size', type=int, default=32)
+parser.add_argument('--bert_dropout', type=float, default=0.2)
+parser.add_argument('--bert_attn_dropout', type=float, default=0.2)
+parser.add_argument('--bert_mask_prob', type=float, default=0.25)
+
+################
+# LLM Model
+################
+parser.add_argument('--llm_base_model', type=str, default='meta-llama/Llama-2-7b-hf')
+parser.add_argument('--llm_base_tokenizer', type=str, default='meta-llama/Llama-2-7b-hf')
+parser.add_argument('--llm_max_title_len', type=int, default=32)
+parser.add_argument('--llm_max_text_len', type=int, default=1536)
+parser.add_argument('--llm_max_history', type=int, default=20)
+parser.add_argument('--llm_train_on_inputs', type=bool, default=False)
+parser.add_argument('--llm_negative_sample_size', type=int, default=19)  # 19 negative & 1 positive
+parser.add_argument('--llm_system_template', type=str,  # instruction
+    default="Given user history in chronological order, recommend an item from the candidate pool with its index letter.")
+parser.add_argument('--llm_input_template', type=str, \
+    default='User history: {}; \n Candidate pool: {}')
+parser.add_argument('--llm_load_in_4bit', type=bool, default=True)
+parser.add_argument('--llm_retrieved_path', type=str, default=None)
+parser.add_argument('--llm_cache_dir', type=str, default=None)
+
+################
+# Lora
+################
+parser.add_argument('--lora_r', type=int, default=8)
+parser.add_argument('--lora_alpha', type=int, default=32)
+parser.add_argument('--lora_dropout', type=float, default=0.05)
+parser.add_argument('--lora_target_modules', type=list, default=['q_proj', 'v_proj'])
+parser.add_argument('--lora_num_epochs', type=int, default=1)
+parser.add_argument('--lora_val_iterations', type=int, default=100)
+parser.add_argument('--lora_early_stopping_patience', type=int, default=20)
+parser.add_argument('--lora_lr', type=float, default=1e-4)
+parser.add_argument('--lora_micro_batch_size', type=int, default=16)
+
+################
+
+
+args = parser.parse_args()
