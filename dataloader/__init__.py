@@ -8,4 +8,5 @@ from .utils import *
 def dataloader_factory(args):
     dataset = dataset_factory(args)
     if args.model_code == 'lru':
-        datal
+        dataloader = LRUDataloader(args, dataset)
+    elif args.model_code == 'llm
