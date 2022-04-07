@@ -23,4 +23,6 @@ def dataloader_factory(args):
 
 def test_subset_dataloader_loader(args):
     dataset = dataset_factory(args)
-    if args.model_code == 'lr
+    if args.model_code == 'lru':
+        dataloader = LRUDataloader(args, dataset)
+    elif args.model_co
