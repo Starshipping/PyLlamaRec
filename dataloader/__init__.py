@@ -15,4 +15,6 @@ def dataloader_factory(args):
     train, val, test = dataloader.get_pytorch_dataloaders()
     if 'llm' in args.model_code:
         tokenizer = dataloader.tokenizer
-        test_retrieval = dataloade
+        test_retrieval = dataloader.test_retrieval
+        return train, val, test, tokenizer, test_retrieval
+    e
