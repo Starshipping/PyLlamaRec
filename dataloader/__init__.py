@@ -21,4 +21,6 @@ def dataloader_factory(args):
         return train, val, test
 
 
-def test_subset_dataloader_loader
+def test_subset_dataloader_loader(args):
+    dataset = dataset_factory(args)
+    if args.model_code == 'lr
