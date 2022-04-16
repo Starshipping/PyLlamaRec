@@ -9,4 +9,6 @@ class AbstractDataloader(metaclass=ABCMeta):
         dataset = dataset.load_dataset()
         self.train = dataset['train']
         self.val = dataset['val']
-        sel
+        self.test = dataset['test']
+        self.meta = dataset['meta']
+        self.umap = d
