@@ -22,4 +22,5 @@ class AbstractDataloader(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def g
+    def get_pytorch_dataloaders(self):
+        pass
