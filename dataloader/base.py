@@ -17,4 +17,9 @@ class AbstractDataloader(metaclass=ABCMeta):
         self.item_count = len(self.smap)
 
     @classmethod
-    @a
+    @abstractmethod
+    def code(cls):
+        pass
+
+    @abstractmethod
+    def g
