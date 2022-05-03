@@ -11,4 +11,8 @@ import pickle
 import transformers
 from transformers import AutoTokenizer
 from transformers.models.llama.tokenization_llama import DEFAULT_SYSTEM_PROMPT
-from trainer import absolute
+from trainer import absolute_recall_mrr_ndcg_for_ks
+
+
+def worker_init_fn(worker_id):
+    r
