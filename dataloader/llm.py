@@ -20,4 +20,5 @@ def worker_init_fn(worker_id):
 
 
 # the following prompting is based on alpaca
-def generate_and
+def generate_and_tokenize_eval(args, data_point, tokenizer, prompter):
+    in_prompt = prompter.gen
