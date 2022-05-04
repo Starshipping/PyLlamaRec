@@ -15,4 +15,5 @@ from trainer import absolute_recall_mrr_ndcg_for_ks
 
 
 def worker_init_fn(worker_id):
-    random.seed(np.random.get_state()[1][0] + worker_id)                             
+    random.seed(np.random.get_state()[1][0] + worker_id)                                                      
+    np.random.seed(np.random.get_state()[1][0
