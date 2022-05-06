@@ -24,4 +24,5 @@ def generate_and_tokenize_eval(args, data_point, tokenizer, prompter):
     in_prompt = prompter.generate_prompt(data_point["system"],
                                          data_point["input"])
     tokenized_full_prompt = tokenizer(in_prompt,
-                 
+                                      truncation=True,
+                             
