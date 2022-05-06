@@ -25,4 +25,5 @@ def generate_and_tokenize_eval(args, data_point, tokenizer, prompter):
                                          data_point["input"])
     tokenized_full_prompt = tokenizer(in_prompt,
                                       truncation=True,
-                             
+                                      max_length=args.llm_max_text_len,
+                               
