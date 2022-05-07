@@ -27,4 +27,5 @@ def generate_and_tokenize_eval(args, data_point, tokenizer, prompter):
                                       truncation=True,
                                       max_length=args.llm_max_text_len,
                                       padding=False,
-                                      return_tenso
+                                      return_tensors=None)
+    tokenized_full_prompt["labels"] = ord(data_point["output"]
