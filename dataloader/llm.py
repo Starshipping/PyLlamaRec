@@ -33,4 +33,5 @@ def generate_and_tokenize_eval(args, data_point, tokenizer, prompter):
     return tokenized_full_prompt
 
 
-def generate_and_tokenize_train(args
+def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
+    def tokenize(prompt, add_eos_token=True)
