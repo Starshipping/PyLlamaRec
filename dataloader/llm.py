@@ -36,4 +36,6 @@ def generate_and_tokenize_eval(args, data_point, tokenizer, prompter):
 def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
     def tokenize(prompt, add_eos_token=True):
         result = tokenizer(prompt,
-                           truncation=Tr
+                           truncation=True,
+                           max_length=args.llm_max_text_len,
+                  
