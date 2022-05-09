@@ -38,4 +38,6 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
         result = tokenizer(prompt,
                            truncation=True,
                            max_length=args.llm_max_text_len,
-                  
+                           padding=False,
+                           return_tensors=None)
+ 
