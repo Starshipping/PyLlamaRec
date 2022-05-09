@@ -40,4 +40,4 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
                            max_length=args.llm_max_text_len,
                            padding=False,
                            return_tensors=None)
- 
+        if (result["input_ids"][-1] != tokenizer.eos_token_id and add_eos_t
