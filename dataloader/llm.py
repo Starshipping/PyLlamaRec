@@ -41,4 +41,7 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
                            padding=False,
                            return_tensors=None)
         if (result["input_ids"][-1] != tokenizer.eos_token_id and add_eos_token):
-            result["input_ids"].append(tokenizer.eos_token_id
+            result["input_ids"].append(tokenizer.eos_token_id)
+            result["attention_mask"].append(1)
+
+        result["labels"] =
