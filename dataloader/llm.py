@@ -44,4 +44,7 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
             result["input_ids"].append(tokenizer.eos_token_id)
             result["attention_mask"].append(1)
 
-        result["labels"] =
+        result["labels"] = result["input_ids"].copy()
+        return result
+
+    full_prompt = prompter.generate_p
