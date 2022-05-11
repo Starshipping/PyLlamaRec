@@ -47,4 +47,5 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
         result["labels"] = result["input_ids"].copy()
         return result
 
-    full_prompt = prompter.generate_p
+    full_prompt = prompter.generate_prompt(data_point["system"],
+                                           data_point
