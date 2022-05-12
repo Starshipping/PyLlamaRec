@@ -49,4 +49,5 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
 
     full_prompt = prompter.generate_prompt(data_point["system"],
                                            data_point["input"],
-                                           data_point["output"]
+                                           data_point["output"])
+    tokenized_full_prompt = tokenize(full_prompt, add_eos_token=
