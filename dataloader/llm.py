@@ -48,4 +48,5 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
         return result
 
     full_prompt = prompter.generate_prompt(data_point["system"],
-                                           data_point
+                                           data_point["input"],
+                                           data_point["output"]
