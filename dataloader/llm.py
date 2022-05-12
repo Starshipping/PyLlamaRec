@@ -52,4 +52,5 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
                                            data_point["output"])
     tokenized_full_prompt = tokenize(full_prompt, add_eos_token=True)
     if not args.llm_train_on_inputs:
-        toke
+        tokenized_full_prompt["labels"][:-2] = [-100] * len(tokenized_full_prompt["labels"][:-2])
+    
