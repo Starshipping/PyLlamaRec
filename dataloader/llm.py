@@ -54,3 +54,7 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
     if not args.llm_train_on_inputs:
         tokenized_full_prompt["labels"][:-2] = [-100] * len(tokenized_full_prompt["labels"][:-2])
     
+    return tokenized_full_prompt
+
+
+def seq_to_token_ids(args, seq, candidates
