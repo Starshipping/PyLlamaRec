@@ -57,4 +57,5 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
     return tokenized_full_prompt
 
 
-def seq_to_token_ids(args, seq, candidates
+def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompter, eval=False):
+    def truncate_title(title
