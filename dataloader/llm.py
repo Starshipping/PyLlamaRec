@@ -63,4 +63,5 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
         title = tokenizer.convert_tokens_to_string(title_)
         return title
 
-    seq_t = ' \n '.join(['(' + str(idx + 1) + ') ' + trunca
+    seq_t = ' \n '.join(['(' + str(idx + 1) + ') ' + truncate_title(text_dict[item]) 
+                       for idx, item in enumerate(
