@@ -60,3 +60,5 @@ def generate_and_tokenize_train(args, data_point, tokenizer, prompter):
 def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompter, eval=False):
     def truncate_title(title):
         title_ = tokenizer.tokenize(title)[:args.llm_max_title_len]
+        title = tokenizer.convert_tokens_to_string(title_)
+       
