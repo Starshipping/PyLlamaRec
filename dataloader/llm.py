@@ -61,4 +61,6 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
     def truncate_title(title):
         title_ = tokenizer.tokenize(title)[:args.llm_max_title_len]
         title = tokenizer.convert_tokens_to_string(title_)
-       
+        return title
+
+    seq_t = ' \n '.join(['(' + str(idx + 1) + ') ' + trunca
