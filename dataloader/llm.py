@@ -67,4 +67,7 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
                        for idx, item in enumerate(seq)])
     can_t = ' \n '.join(['(' + chr(ord('A') + idx) + ') ' + truncate_title(text_dict[item])
                        for idx, item in enumerate(candidates)])
-    output = chr(ord('A') + candidates.index(label)) 
+    output = chr(ord('A') + candidates.index(label))  # ranking only
+    
+    data_point = {}
+    data_poi
