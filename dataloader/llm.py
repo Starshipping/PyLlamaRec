@@ -70,4 +70,4 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
     output = chr(ord('A') + candidates.index(label))  # ranking only
     
     data_point = {}
-    data_poi
+    data_point['system'] = args.llm_system_template if args.llm_system_template is n
