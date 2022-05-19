@@ -73,4 +73,6 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
     data_point['system'] = args.llm_system_template if args.llm_system_template is not None else DEFAULT_SYSTEM_PROMPT
     data_point['input'] = args.llm_input_template.format(seq_t, can_t)
     data_point['output'] = output
- 
+    
+    if eval:
+        return generate_and_tokenize_eval(args, data_point, t
