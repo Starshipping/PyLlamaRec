@@ -75,4 +75,6 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
     data_point['output'] = output
     
     if eval:
-        return generate_and_tokenize_eval(args, data_point, t
+        return generate_and_tokenize_eval(args, data_point, tokenizer, prompter)
+    else:
+        return generate_and_tokenize_train(ar
