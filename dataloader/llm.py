@@ -85,4 +85,6 @@ class LLMDataloader():
         self.args = args
         self.rng = np.random
         self.save_folder = dataset._get_preprocessed_folder_path()
-        seq_dataset =
+        seq_dataset = dataset.load_dataset()
+        self.train = seq_dataset['train']
+     
