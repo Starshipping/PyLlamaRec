@@ -81,4 +81,7 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
 
 
 class LLMDataloader():
-    def __init__(self, 
+    def __init__(self, args, dataset):
+        self.args = args
+        self.rng = np.random
+        self.save_fold
