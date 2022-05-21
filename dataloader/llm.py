@@ -84,4 +84,5 @@ class LLMDataloader():
     def __init__(self, args, dataset):
         self.args = args
         self.rng = np.random
-        self.save_fold
+        self.save_folder = dataset._get_preprocessed_folder_path()
+        seq_dataset =
