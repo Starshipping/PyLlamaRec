@@ -77,4 +77,8 @@ def seq_to_token_ids(args, seq, candidates, label, text_dict, tokenizer, prompte
     if eval:
         return generate_and_tokenize_eval(args, data_point, tokenizer, prompter)
     else:
-        return generate_and_tokenize_train(ar
+        return generate_and_tokenize_train(args, data_point, tokenizer, prompter)
+
+
+class LLMDataloader():
+    def __init__(self, 
