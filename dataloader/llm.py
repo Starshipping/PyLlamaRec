@@ -87,4 +87,6 @@ class LLMDataloader():
         self.save_folder = dataset._get_preprocessed_folder_path()
         seq_dataset = dataset.load_dataset()
         self.train = seq_dataset['train']
-     
+        self.val = seq_dataset['val']
+        self.test = seq_dataset['test']
+        self.umap =
