@@ -91,4 +91,6 @@ class LLMDataloader():
         self.test = seq_dataset['test']
         self.umap = seq_dataset['umap']
         self.smap = seq_dataset['smap']
-        sel
+        self.text_dict = seq_dataset['meta']
+        self.user_count = len(self.umap)
+ 
