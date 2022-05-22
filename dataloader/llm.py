@@ -89,4 +89,6 @@ class LLMDataloader():
         self.train = seq_dataset['train']
         self.val = seq_dataset['val']
         self.test = seq_dataset['test']
-        self.umap =
+        self.umap = seq_dataset['umap']
+        self.smap = seq_dataset['smap']
+        sel
