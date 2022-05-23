@@ -95,4 +95,7 @@ class LLMDataloader():
         self.user_count = len(self.umap)
         self.item_count = len(self.smap)
         
-        args.num_items =
+        args.num_items = self.item_count
+        self.max_len = args.llm_max_history
+        
+   
