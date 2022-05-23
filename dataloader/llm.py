@@ -98,4 +98,5 @@ class LLMDataloader():
         args.num_items = self.item_count
         self.max_len = args.llm_max_history
         
-   
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            args.llm
