@@ -100,4 +100,5 @@ class LLMDataloader():
         
         self.tokenizer = AutoTokenizer.from_pretrained(
             args.llm_base_tokenizer, cache_dir=args.llm_cache_dir)
-        self.tokenize
+        self.tokenizer.pad_token = self.tokenizer.unk_token
+        self.tokenizer.padding_side = 'left
