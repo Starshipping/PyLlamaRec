@@ -99,4 +99,5 @@ class LLMDataloader():
         self.max_len = args.llm_max_history
         
         self.tokenizer = AutoTokenizer.from_pretrained(
-            args.llm
+            args.llm_base_tokenizer, cache_dir=args.llm_cache_dir)
+        self.tokenize
