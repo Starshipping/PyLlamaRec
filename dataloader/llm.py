@@ -103,4 +103,7 @@ class LLMDataloader():
         self.tokenizer.pad_token = self.tokenizer.unk_token
         self.tokenizer.padding_side = 'left'
         self.tokenizer.truncation_side = 'left'
-        self.tokenizer.clean_up_tokeni
+        self.tokenizer.clean_up_tokenization_spaces = True
+        self.prompter = Prompter()
+        
+   
