@@ -113,4 +113,5 @@ class LLMDataloader():
         
         print('******************** Constructing Validation Subset ********************')
         self.val_probs = retrieved_file['val_probs']
- 
+        self.val_labels = retrieved_file['val_labels']
+        self.val_me
