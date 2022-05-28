@@ -111,4 +111,6 @@ class LLMDataloader():
         retrieved_file = pickle.load(open(os.path.join(args.llm_retrieved_path,
                                                        'retrieved.pkl'), 'rb'))
         
-        print('******************** Constructing Validation Subset *************
+        print('******************** Constructing Validation Subset ********************')
+        self.val_probs = retrieved_file['val_probs']
+ 
