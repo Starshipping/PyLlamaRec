@@ -115,4 +115,5 @@ class LLMDataloader():
         self.val_probs = retrieved_file['val_probs']
         self.val_labels = retrieved_file['val_labels']
         self.val_metrics = retrieved_file['val_metrics']
-        self.val_users = [u for u, (p, l) in e
+        self.val_users = [u for u, (p, l) in enumerate(zip(self.val_probs, self.val_labels), start=1) \
+       
