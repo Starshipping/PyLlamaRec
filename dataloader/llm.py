@@ -120,4 +120,5 @@ class LLMDataloader():
         self.val_candidates = [torch.topk(torch.tensor(self.val_probs[u-1]), 
                                 self.args.llm_negative_sample_size+1).indices.tolist() for u in self.val_users]
 
-        print
+        print('******************** Constructing Test Subset ********************')
+        se
