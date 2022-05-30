@@ -121,4 +121,5 @@ class LLMDataloader():
                                 self.args.llm_negative_sample_size+1).indices.tolist() for u in self.val_users]
 
         print('******************** Constructing Test Subset ********************')
-        se
+        self.test_probs = retrieved_file['test_probs']
+        self.tes
