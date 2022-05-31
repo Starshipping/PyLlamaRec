@@ -122,4 +122,5 @@ class LLMDataloader():
 
         print('******************** Constructing Test Subset ********************')
         self.test_probs = retrieved_file['test_probs']
-        self.tes
+        self.test_labels = retrieved_file['test_labels']
+        self.test_metrics = retrieved_file['t
