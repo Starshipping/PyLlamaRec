@@ -123,4 +123,5 @@ class LLMDataloader():
         print('******************** Constructing Test Subset ********************')
         self.test_probs = retrieved_file['test_probs']
         self.test_labels = retrieved_file['test_labels']
-        self.test_metrics = retrieved_file['t
+        self.test_metrics = retrieved_file['test_metrics']
+        self.test_users = [u for u, (p, l) in enumerate(zip(sel
