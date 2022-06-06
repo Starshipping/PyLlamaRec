@@ -131,4 +131,5 @@ class LLMDataloader():
         self.non_test_users = [u for u, (p, l) in enumerate(zip(self.test_probs, self.test_labels), start=1) \
                                if l not in torch.topk(torch.tensor(p), self.args.llm_negative_sample_size+1).indices]
         self.test_retrieval = {
-            'origina
+            'original_size': len(self.test_probs),
+            'retrieval_size': len(self.test_candidates
