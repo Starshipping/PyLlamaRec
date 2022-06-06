@@ -132,4 +132,6 @@ class LLMDataloader():
                                if l not in torch.topk(torch.tensor(p), self.args.llm_negative_sample_size+1).indices]
         self.test_retrieval = {
             'original_size': len(self.test_probs),
-            'retrieval_size': len(self.test_candidates
+            'retrieval_size': len(self.test_candidates),
+            'original_metrics': self.test_metrics,
+         
