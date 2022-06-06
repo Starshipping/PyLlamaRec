@@ -129,4 +129,4 @@ class LLMDataloader():
         self.test_candidates = [torch.topk(torch.tensor(self.test_probs[u-1]), 
                                 self.args.llm_negative_sample_size+1).indices.tolist() for u in self.test_users]
         self.non_test_users = [u for u, (p, l) in enumerate(zip(self.test_probs, self.test_labels), start=1) \
-                               if l no
+                               if l not in torch.topk(torch.tensor(p), self.args.llm_negative_sample_size+1
