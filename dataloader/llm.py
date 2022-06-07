@@ -138,4 +138,6 @@ class LLMDataloader():
                 torch.tensor(self.test_probs)[torch.tensor(self.test_users)-1],
                 torch.tensor(self.test_labels)[torch.tensor(self.test_users)-1],
                 self.args.metric_ks,
-     
+            ),
+            'non_retrieval_metrics': absolute_recall_mrr_ndcg_for_ks(
+  
