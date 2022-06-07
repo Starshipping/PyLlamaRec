@@ -135,4 +135,5 @@ class LLMDataloader():
             'retrieval_size': len(self.test_candidates),
             'original_metrics': self.test_metrics,
             'retrieval_metrics': absolute_recall_mrr_ndcg_for_ks(
-                torch.tensor(self.test_p
+                torch.tensor(self.test_probs)[torch.tensor(self.test_users)-1],
+                torch.tensor(self.test_labels)[
