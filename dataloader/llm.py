@@ -158,4 +158,4 @@ class LLMDataloader():
 
     def _get_train_loader(self):
         dataset = self._get_train_dataset()
-        dataloader = dat
+        dataloader = data_utils.DataLoader(dataset, batch_size=self.args.lora_micro_batch_siz
