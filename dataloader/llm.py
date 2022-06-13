@@ -163,4 +163,5 @@ class LLMDataloader():
                                            worker_init_fn=worker_init_fn)
         return dataloader
 
-    def _get_
+    def _get_train_dataset(self):
+        dataset = LLMTrainDataset(self.args, self.train, self.m
