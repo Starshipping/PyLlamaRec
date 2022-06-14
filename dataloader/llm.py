@@ -168,4 +168,7 @@ class LLMDataloader():
                                   self.text_dict, self.tokenizer, self.prompter)
         return dataset
 
-    def _get_val_load
+    def _get_val_loader(self):
+        return self._get_eval_loader(mode='val')
+
+    def _get_test_
