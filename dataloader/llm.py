@@ -164,4 +164,5 @@ class LLMDataloader():
         return dataloader
 
     def _get_train_dataset(self):
-        dataset = LLMTrainDataset(self.args, self.train, self.m
+        dataset = LLMTrainDataset(self.args, self.train, self.max_len, self.rng,
+                                  self.text_dict, self.token
