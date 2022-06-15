@@ -174,4 +174,5 @@ class LLMDataloader():
     def _get_test_loader(self):
         return self._get_eval_loader(mode='test')
 
-    def _get_
+    def _get_eval_loader(self, mode):
+        batch_size = self.args.val_batch_size if mode
