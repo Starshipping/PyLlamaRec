@@ -183,4 +183,4 @@ class LLMDataloader():
 
     def _get_eval_dataset(self, mode):
         if mode == 'val':
-            dataset = LL
+            dataset = LLMValidDataset(self.args, self.train, self.val, self.max_len, self.rng, \
