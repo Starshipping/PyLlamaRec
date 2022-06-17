@@ -185,4 +185,6 @@ class LLMDataloader():
         if mode == 'val':
             dataset = LLMValidDataset(self.args, self.train, self.val, self.max_len, self.rng, \
                                       self.text_dict, self.tokenizer, self.prompter, self.val_users, \
-                                      self.val_candida
+                                      self.val_candidates)
+        elif mode == 'test':
+            dataset = LLMTestDataset(self.args,
