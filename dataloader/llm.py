@@ -194,4 +194,5 @@ class LLMDataloader():
 
 
 class LLMTrainDataset(data_utils.Dataset):
-    def __init__(self, args
+    def __init__(self, args, u2seq, max_len, rng, text_dict, tokenizer, prompter):
+        se
