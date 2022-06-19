@@ -190,4 +190,8 @@ class LLMDataloader():
             dataset = LLMTestDataset(self.args, self.train, self.val, self.test, self.max_len, \
                                      self.rng, self.text_dict, self.tokenizer, self.prompter, self.test_users, \
                                      self.test_candidates)
-        re
+        return dataset
+
+
+class LLMTrainDataset(data_utils.Dataset):
+    def __init__(self, args
