@@ -195,4 +195,6 @@ class LLMDataloader():
 
 class LLMTrainDataset(data_utils.Dataset):
     def __init__(self, args, u2seq, max_len, rng, text_dict, tokenizer, prompter):
-        se
+        self.args = args
+        self.max_len = max_len
+        self.num_items = args.num_items
