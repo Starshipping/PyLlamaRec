@@ -198,3 +198,6 @@ class LLMTrainDataset(data_utils.Dataset):
         self.args = args
         self.max_len = max_len
         self.num_items = args.num_items
+        self.rng = rng
+        self.text_dict = text_dict
+        self.tokenize
