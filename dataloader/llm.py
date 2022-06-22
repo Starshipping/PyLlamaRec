@@ -204,4 +204,6 @@ class LLMTrainDataset(data_utils.Dataset):
         self.prompter = prompter
 
         self.all_seqs = []
-  
+        for u in sorted(u2seq.keys()):
+            seq = u2seq[u]
+            for i in ran
