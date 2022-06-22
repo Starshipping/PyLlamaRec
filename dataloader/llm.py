@@ -200,4 +200,8 @@ class LLMTrainDataset(data_utils.Dataset):
         self.num_items = args.num_items
         self.rng = rng
         self.text_dict = text_dict
-        self.tokenize
+        self.tokenizer = tokenizer
+        self.prompter = prompter
+
+        self.all_seqs = []
+  
