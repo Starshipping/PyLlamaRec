@@ -206,4 +206,7 @@ class LLMTrainDataset(data_utils.Dataset):
         self.all_seqs = []
         for u in sorted(u2seq.keys()):
             seq = u2seq[u]
-            for i in ran
+            for i in range(2, len(seq)+1):
+                self.all_seqs += [seq[:i]]
+
+   
