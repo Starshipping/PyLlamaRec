@@ -209,4 +209,7 @@ class LLMTrainDataset(data_utils.Dataset):
             for i in range(2, len(seq)+1):
                 self.all_seqs += [seq[:i]]
 
-   
+    def __len__(self):
+        return len(self.all_seqs)
+
+    def __getitem
