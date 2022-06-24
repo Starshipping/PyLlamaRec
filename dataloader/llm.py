@@ -212,4 +212,6 @@ class LLMTrainDataset(data_utils.Dataset):
     def __len__(self):
         return len(self.all_seqs)
 
-    def __getitem
+    def __getitem__(self, index):
+        tokens = self.all_seqs[index]
+        answer = tokens[-1]
