@@ -215,3 +215,6 @@ class LLMTrainDataset(data_utils.Dataset):
     def __getitem__(self, index):
         tokens = self.all_seqs[index]
         answer = tokens[-1]
+        original_seq = tokens[:-1]
+        
+        seq = origi
