@@ -217,4 +217,6 @@ class LLMTrainDataset(data_utils.Dataset):
         answer = tokens[-1]
         original_seq = tokens[:-1]
         
-        seq = origi
+        seq = original_seq[-self.max_len:]
+        cur_idx, candidates = 0, [answer]
+       
