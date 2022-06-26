@@ -219,4 +219,4 @@ class LLMTrainDataset(data_utils.Dataset):
         
         seq = original_seq[-self.max_len:]
         cur_idx, candidates = 0, [answer]
-       
+        samples = self.rng.randint(1, self.args.num_items+1, size=5*self.args.l
