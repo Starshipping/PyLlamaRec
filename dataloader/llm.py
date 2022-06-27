@@ -220,4 +220,6 @@ class LLMTrainDataset(data_utils.Dataset):
         seq = original_seq[-self.max_len:]
         cur_idx, candidates = 0, [answer]
         samples = self.rng.randint(1, self.args.num_items+1, size=5*self.args.llm_negative_sample_size)
-        while len(candidates) < self.args.llm_n
+        while len(candidates) < self.args.llm_negative_sample_size + 1:
+            item = samples[cur_idx]
+            cur
