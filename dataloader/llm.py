@@ -222,4 +222,6 @@ class LLMTrainDataset(data_utils.Dataset):
         samples = self.rng.randint(1, self.args.num_items+1, size=5*self.args.llm_negative_sample_size)
         while len(candidates) < self.args.llm_negative_sample_size + 1:
             item = samples[cur_idx]
-            cur
+            cur_idx += 1
+            if item in original_seq or item == answer: continue
+   
