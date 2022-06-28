@@ -227,4 +227,4 @@ class LLMTrainDataset(data_utils.Dataset):
             else: candidates.append(item)
         self.rng.shuffle(candidates)
 
-        re
+        return seq_to_token_ids(self.args, seq, candidates, answer, self.
