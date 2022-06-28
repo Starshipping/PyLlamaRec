@@ -224,4 +224,7 @@ class LLMTrainDataset(data_utils.Dataset):
             item = samples[cur_idx]
             cur_idx += 1
             if item in original_seq or item == answer: continue
-   
+            else: candidates.append(item)
+        self.rng.shuffle(candidates)
+
+        re
