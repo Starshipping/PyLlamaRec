@@ -228,4 +228,8 @@ class LLMTrainDataset(data_utils.Dataset):
         self.rng.shuffle(candidates)
 
         return seq_to_token_ids(self.args, seq, candidates, answer, self.text_dict, \
-                                self.tokenizer, self.prompter
+                                self.tokenizer, self.prompter, eval=False)
+
+
+class LLMValidDataset(data_utils.Dataset):
+    def __init_
