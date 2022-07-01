@@ -238,4 +238,7 @@ class LLMValidDataset(data_utils.Dataset):
         self.u2answer = u2answer
         self.users = sorted(self.u2seq.keys())
         self.max_len = max_len
-        self.
+        self.rng = rng
+        self.text_dict = text_dict
+        self.tokenizer = tokenizer
+        s
