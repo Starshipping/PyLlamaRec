@@ -243,4 +243,7 @@ class LLMValidDataset(data_utils.Dataset):
         self.tokenizer = tokenizer
         self.prompter = prompter
         self.val_users = val_users
-        self.val_ca
+        self.val_candidates = val_candidates
+
+    def __len__(self):
+        return len(
