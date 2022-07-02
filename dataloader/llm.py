@@ -250,3 +250,5 @@ class LLMValidDataset(data_utils.Dataset):
 
     def __getitem__(self, index):
         user = self.val_users[index]
+        seq = self.u2seq[user]
+        answer = self.u2answer[user]
