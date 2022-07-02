@@ -241,4 +241,6 @@ class LLMValidDataset(data_utils.Dataset):
         self.rng = rng
         self.text_dict = text_dict
         self.tokenizer = tokenizer
-        s
+        self.prompter = prompter
+        self.val_users = val_users
+        self.val_ca
