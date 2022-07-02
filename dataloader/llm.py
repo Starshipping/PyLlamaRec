@@ -246,4 +246,7 @@ class LLMValidDataset(data_utils.Dataset):
         self.val_candidates = val_candidates
 
     def __len__(self):
-        return len(
+        return len(self.val_users)
+
+    def __getitem__(self, index):
+        user = self.val_users[index]
