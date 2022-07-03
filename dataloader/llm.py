@@ -254,4 +254,6 @@ class LLMValidDataset(data_utils.Dataset):
         answer = self.u2answer[user][0]
         
         seq = seq[-self.max_len:]
-        candidates 
+        candidates = self.val_candidates[index]
+        assert answer in candidates
+        # self.rng.
