@@ -256,4 +256,6 @@ class LLMValidDataset(data_utils.Dataset):
         seq = seq[-self.max_len:]
         candidates = self.val_candidates[index]
         assert answer in candidates
-        # self.rng.
+        # self.rng.shuffle(candidates)
+        
+        return seq_to_token_ids(se
