@@ -264,4 +264,7 @@ class LLMValidDataset(data_utils.Dataset):
 class LLMTestDataset(data_utils.Dataset):
     def __init__(self, args, u2seq, u2val, u2answer, max_len, rng, text_dict, tokenizer, prompter, test_users, test_candidates):
         self.args = args
-        self.
+        self.u2seq = u2seq
+        self.u2val = u2val
+        self.u2answer = u2answer
+        
