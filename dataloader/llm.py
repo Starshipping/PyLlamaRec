@@ -267,4 +267,7 @@ class LLMTestDataset(data_utils.Dataset):
         self.u2seq = u2seq
         self.u2val = u2val
         self.u2answer = u2answer
-        
+        self.users = sorted(u2seq.keys())
+        self.max_len = max_len
+        self.rng = rng
+     
