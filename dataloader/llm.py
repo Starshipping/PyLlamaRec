@@ -270,4 +270,6 @@ class LLMTestDataset(data_utils.Dataset):
         self.users = sorted(u2seq.keys())
         self.max_len = max_len
         self.rng = rng
-     
+        self.text_dict = text_dict
+        self.tokenizer = tokenizer
+        self.pro
