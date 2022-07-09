@@ -272,4 +272,6 @@ class LLMTestDataset(data_utils.Dataset):
         self.rng = rng
         self.text_dict = text_dict
         self.tokenizer = tokenizer
-        self.pro
+        self.prompter = prompter
+        self.test_users = test_users
+       
