@@ -280,4 +280,5 @@ class LLMTestDataset(data_utils.Dataset):
         return len(self.test_users)
     
     def __getitem__(self, index):
-        user =
+        user = self.test_users[index]
+        seq = self.u2seq[user] + self.u2
