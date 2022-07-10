@@ -277,4 +277,7 @@ class LLMTestDataset(data_utils.Dataset):
         self.test_candidates = test_candidates
     
     def __len__(self):
-        return 
+        return len(self.test_users)
+    
+    def __getitem__(self, index):
+        user =
