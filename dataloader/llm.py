@@ -281,4 +281,7 @@ class LLMTestDataset(data_utils.Dataset):
     
     def __getitem__(self, index):
         user = self.test_users[index]
-        seq = self.u2seq[user] + self.u2
+        seq = self.u2seq[user] + self.u2val[user]
+        answer = self.u2answer[user][0]
+
+        seq = seq[-self.ma
