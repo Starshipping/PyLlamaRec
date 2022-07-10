@@ -274,4 +274,7 @@ class LLMTestDataset(data_utils.Dataset):
         self.tokenizer = tokenizer
         self.prompter = prompter
         self.test_users = test_users
-       
+        self.test_candidates = test_candidates
+    
+    def __len__(self):
+        return 
