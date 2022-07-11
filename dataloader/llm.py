@@ -284,4 +284,6 @@ class LLMTestDataset(data_utils.Dataset):
         seq = self.u2seq[user] + self.u2val[user]
         answer = self.u2answer[user][0]
 
-        seq = seq[-self.ma
+        seq = seq[-self.max_len:]
+        candidates = self.test_candidates[index]
+        assert 
