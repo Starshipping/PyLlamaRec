@@ -286,4 +286,7 @@ class LLMTestDataset(data_utils.Dataset):
 
         seq = seq[-self.max_len:]
         candidates = self.test_candidates[index]
-        assert 
+        assert answer in candidates
+        # self.rng.shuffle(candidates)
+
+        return seq_
