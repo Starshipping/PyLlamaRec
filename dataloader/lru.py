@@ -14,4 +14,7 @@ def worker_init_fn(worker_id):
 
 
 class LRUDataloader():
-    def __init__(self, ar
+    def __init__(self, args, dataset):
+        self.args = args
+        self.rng = np.random
+        self.save_f
