@@ -17,4 +17,5 @@ class LRUDataloader():
     def __init__(self, args, dataset):
         self.args = args
         self.rng = np.random
-        self.save_f
+        self.save_folder = dataset._get_preprocessed_folder_path()
+        dataset = dataset.load_dat
