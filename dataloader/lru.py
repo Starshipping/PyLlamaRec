@@ -23,4 +23,6 @@ class LRUDataloader():
         self.val = dataset['val']
         self.test = dataset['test']
         self.umap = dataset['umap']
-        self.sma
+        self.smap = dataset['smap']
+        self.user_count = len(self.umap)
+        self.item_count = len(se
