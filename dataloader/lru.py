@@ -18,4 +18,7 @@ class LRUDataloader():
         self.args = args
         self.rng = np.random
         self.save_folder = dataset._get_preprocessed_folder_path()
-        dataset = dataset.load_dat
+        dataset = dataset.load_dataset()
+        self.train = dataset['train']
+        self.val = dataset['val']
+      
