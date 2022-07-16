@@ -21,4 +21,6 @@ class LRUDataloader():
         dataset = dataset.load_dataset()
         self.train = dataset['train']
         self.val = dataset['val']
-      
+        self.test = dataset['test']
+        self.umap = dataset['umap']
+        self.sma
