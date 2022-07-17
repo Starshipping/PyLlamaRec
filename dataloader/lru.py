@@ -25,4 +25,7 @@ class LRUDataloader():
         self.umap = dataset['umap']
         self.smap = dataset['smap']
         self.user_count = len(self.umap)
-        self.item_count = len(se
+        self.item_count = len(self.smap)
+
+        args.num_users = self.user_count
+        
