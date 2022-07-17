@@ -30,4 +30,7 @@ class LRUDataloader():
         args.num_users = self.user_count
         args.num_items = self.item_count
         self.max_len = args.bert_max_len
-   
+        self.sliding_size = args.sliding_window_size
+
+    @classmethod
+    def cod
