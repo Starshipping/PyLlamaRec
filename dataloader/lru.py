@@ -28,4 +28,6 @@ class LRUDataloader():
         self.item_count = len(self.smap)
 
         args.num_users = self.user_count
-        
+        args.num_items = self.item_count
+        self.max_len = args.bert_max_len
+   
