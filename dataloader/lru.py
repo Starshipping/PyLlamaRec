@@ -33,4 +33,8 @@ class LRUDataloader():
         self.sliding_size = args.sliding_window_size
 
     @classmethod
-    def cod
+    def code(cls):
+        return 'lru'
+
+    def get_pytorch_dataloaders(self):
+        train
