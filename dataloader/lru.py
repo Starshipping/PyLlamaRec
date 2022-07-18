@@ -40,4 +40,6 @@ class LRUDataloader():
         train_loader = self._get_train_loader()
         val_loader = self._get_val_loader()
         test_loader = self._get_test_loader()
-        return train_loader, val_lo
+        return train_loader, val_loader, test_loader
+    
+    def get_pytorch_test_subset_dataloader(self
