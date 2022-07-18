@@ -37,4 +37,5 @@ class LRUDataloader():
         return 'lru'
 
     def get_pytorch_dataloaders(self):
-        train
+        train_loader = self._get_train_loader()
+        val_loader = self._get_val_loader()
