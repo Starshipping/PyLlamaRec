@@ -46,4 +46,7 @@ class LRUDataloader():
         retrieved_file_path = self.args.llm_retrieved_path
         print('Loading retrieved file from {}'.format(retrieved_file_path))
         retrieved_file = pickle.load(open(os.path.join(retrieved_file_path,
-                                                       'retrieved.pkl'), 'rb
+                                                       'retrieved.pkl'), 'rb'))
+        
+        test_probs = retrieved_file['test_probs']
+        test_lab
