@@ -49,4 +49,5 @@ class LRUDataloader():
                                                        'retrieved.pkl'), 'rb'))
         
         test_probs = retrieved_file['test_probs']
-        test_lab
+        test_labels = retrieved_file['test_labels']
+        test_users = [u for u, (p, l) in enu
