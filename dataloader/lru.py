@@ -53,3 +53,4 @@ class LRUDataloader():
         test_users = [u for u, (p, l) in enumerate(zip(test_probs, test_labels), start=1) \
                       if l in torch.topk(torch.tensor(p), self.args.llm_negative_sample_size+1).indices]
 
+        dataset = dataset = LRUTestDataset(self.args, self.train, self.val,
