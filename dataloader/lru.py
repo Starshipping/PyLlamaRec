@@ -50,4 +50,5 @@ class LRUDataloader():
         
         test_probs = retrieved_file['test_probs']
         test_labels = retrieved_file['test_labels']
-        test_users = [u for u, (p, l) in enu
+        test_users = [u for u, (p, l) in enumerate(zip(test_probs, test_labels), start=1) \
+                      if l 
