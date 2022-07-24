@@ -56,4 +56,4 @@ class LRUDataloader():
         dataset = dataset = LRUTestDataset(self.args, self.train, self.val, self.test, self.max_len, 
                                            self.rng, subset_users=test_users)
         dataloader = data_utils.DataLoader(dataset, batch_size=self.args.val_batch_size, shuffle=False,
-              
+                                           pin_memory=True, num_workers=self.args.num_wor
