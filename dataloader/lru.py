@@ -60,3 +60,5 @@ class LRUDataloader():
         return dataloader
 
     def _get_train_loader(self):
+        dataset = self._get_train_dataset()
+        dataloader = data_utils.DataLoader(dat
