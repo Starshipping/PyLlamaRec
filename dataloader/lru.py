@@ -69,4 +69,7 @@ class LRUDataloader():
     def _get_train_dataset(self):
         dataset = LRUTrainDataset(
             self.args, self.train, self.max_len, self.sliding_size, self.rng)
-        return datas
+        return dataset
+
+    def _get_val_loader(self):
+        return self._get_eval_loader(mode='va
