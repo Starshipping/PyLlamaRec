@@ -75,4 +75,7 @@ class LRUDataloader():
         return self._get_eval_loader(mode='val')
 
     def _get_test_loader(self):
-        return self._ge
+        return self._get_eval_loader(mode='test')
+
+    def _get_eval_loader(self, mode):
+        ba
