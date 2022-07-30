@@ -84,4 +84,6 @@ class LRUDataloader():
                         pin_memory=True, num_workers=self.args.num_workers)
         return dataloader
 
-    def _get_eval_dataset(self, mode
+    def _get_eval_dataset(self, mode):
+        if mode == 'val':
+            dataset = LRUValidDataset(
