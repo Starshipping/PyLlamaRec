@@ -87,4 +87,5 @@ class LRUDataloader():
     def _get_eval_dataset(self, mode):
         if mode == 'val':
             dataset = LRUValidDataset(self.args, self.train, self.val, self.max_len, self.rng)
-    
+        elif mode == 'test':
+            dataset = LRUTestDataset(self.args,
