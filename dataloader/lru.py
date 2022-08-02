@@ -96,4 +96,6 @@ class LRUTrainDataset(data_utils.Dataset):
     def __init__(self, args, u2seq, max_len, sliding_size, rng):
         self.args = args
         self.max_len = max_len
-        self.sliding_step = int(slid
+        self.sliding_step = int(sliding_size * max_len)
+        self.num_items = args.num_items
+        self.rng = 
