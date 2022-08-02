@@ -93,3 +93,5 @@ class LRUDataloader():
 
 
 class LRUTrainDataset(data_utils.Dataset):
+    def __init__(self, args, u2seq, max_len, sliding_size, rng):
+        self.args = args
