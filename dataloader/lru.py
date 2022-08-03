@@ -98,4 +98,8 @@ class LRUTrainDataset(data_utils.Dataset):
         self.max_len = max_len
         self.sliding_step = int(sliding_size * max_len)
         self.num_items = args.num_items
-        self.rng = 
+        self.rng = rng
+        
+        assert self.sliding_step > 0
+        self.all_seqs = []
+ 
