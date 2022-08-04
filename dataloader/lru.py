@@ -105,4 +105,6 @@ class LRUTrainDataset(data_utils.Dataset):
         for u in sorted(u2seq.keys()):
             seq = u2seq[u]
             if len(seq) < self.max_len + self.sliding_step:
-              
+                self.all_seqs.append(seq)
+            else:
+                start_idx = r
