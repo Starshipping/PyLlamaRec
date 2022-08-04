@@ -102,4 +102,6 @@ class LRUTrainDataset(data_utils.Dataset):
         
         assert self.sliding_step > 0
         self.all_seqs = []
- 
+        for u in sorted(u2seq.keys()):
+            seq = u2seq[u]
+  
