@@ -110,4 +110,8 @@ class LRUTrainDataset(data_utils.Dataset):
                 start_idx = range(len(seq) - max_len, -1, -self.sliding_step)
                 self.all_seqs = self.all_seqs + [seq[i:i + max_len] for i in start_idx]
 
-    def _
+    def __len__(self):
+        return len(self.all_seqs)
+
+    def __getitem__(self, index):
+ 
