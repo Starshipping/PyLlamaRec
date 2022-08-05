@@ -107,4 +107,5 @@ class LRUTrainDataset(data_utils.Dataset):
             if len(seq) < self.max_len + self.sliding_step:
                 self.all_seqs.append(seq)
             else:
-                start_idx = r
+                start_idx = range(len(seq) - max_len, -1, -self.sliding_step)
+                self.all_seqs 
