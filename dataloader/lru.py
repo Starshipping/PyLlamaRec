@@ -114,4 +114,6 @@ class LRUTrainDataset(data_utils.Dataset):
         return len(self.all_seqs)
 
     def __getitem__(self, index):
+        seq = self.all_seqs[index]
+        labels = seq[-self.max_len:]
  
