@@ -118,4 +118,7 @@ class LRUTrainDataset(data_utils.Dataset):
         labels = seq[-self.max_len:]
         tokens = seq[:-1][-self.max_len:]
 
-        mask_len = sel
+        mask_len = self.max_len - len(tokens)
+        tokens = [0] * mask_len + tokens
+
+        
