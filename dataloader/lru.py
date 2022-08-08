@@ -121,4 +121,5 @@ class LRUTrainDataset(data_utils.Dataset):
         mask_len = self.max_len - len(tokens)
         tokens = [0] * mask_len + tokens
 
-        
+        mask_len = self.max_len - len(labels)
+        labels = [0] * mask_len + lab
