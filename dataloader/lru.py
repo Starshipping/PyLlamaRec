@@ -124,4 +124,8 @@ class LRUTrainDataset(data_utils.Dataset):
         mask_len = self.max_len - len(labels)
         labels = [0] * mask_len + labels
 
-        return torch.LongTensor(tokens), to
+        return torch.LongTensor(tokens), torch.LongTensor(labels)
+
+
+class LRUValidDataset(data_utils.Dataset):
+    def 
