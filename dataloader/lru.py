@@ -128,4 +128,6 @@ class LRUTrainDataset(data_utils.Dataset):
 
 
 class LRUValidDataset(data_utils.Dataset):
-    def 
+    def __init__(self, args, u2seq, u2answer, max_len, rng):
+        self.args = args
+        self.
