@@ -132,4 +132,5 @@ class LRUValidDataset(data_utils.Dataset):
         self.args = args
         self.u2seq = u2seq
         self.u2answer = u2answer
-        users = sorted(self.
+        users = sorted(self.u2seq.keys())
+        self.users = [u for u in users if len(u2answer[u]) 
