@@ -133,4 +133,8 @@ class LRUValidDataset(data_utils.Dataset):
         self.u2seq = u2seq
         self.u2answer = u2answer
         users = sorted(self.u2seq.keys())
-        self.users = [u for u in users if len(u2answer[u]) 
+        self.users = [u for u in users if len(u2answer[u]) > 0]
+        self.max_len = max_len
+        self.rng = rng
+    
+    def __len__(se
