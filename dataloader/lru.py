@@ -137,4 +137,8 @@ class LRUValidDataset(data_utils.Dataset):
         self.max_len = max_len
         self.rng = rng
     
-    def __len__(se
+    def __len__(self):
+        return len(self.users)
+
+    def __getitem__(self, index):
+        user
