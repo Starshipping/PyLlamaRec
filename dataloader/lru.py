@@ -143,4 +143,7 @@ class LRUValidDataset(data_utils.Dataset):
     def __getitem__(self, index):
         user = self.users[index]
         seq = self.u2seq[user]
-        answer =
+        answer = self.u2answer[user]
+
+        seq = seq[-self.max_len:]
+        padding_l
