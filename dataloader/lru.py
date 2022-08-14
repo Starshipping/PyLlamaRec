@@ -141,4 +141,6 @@ class LRUValidDataset(data_utils.Dataset):
         return len(self.users)
 
     def __getitem__(self, index):
-        user
+        user = self.users[index]
+        seq = self.u2seq[user]
+        answer =
