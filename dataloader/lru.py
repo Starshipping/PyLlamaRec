@@ -146,4 +146,7 @@ class LRUValidDataset(data_utils.Dataset):
         answer = self.u2answer[user]
 
         seq = seq[-self.max_len:]
-        padding_l
+        padding_len = self.max_len - len(seq)
+        seq = [0] * padding_len + seq
+
+        
