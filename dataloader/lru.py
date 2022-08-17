@@ -152,4 +152,5 @@ class LRUValidDataset(data_utils.Dataset):
         return torch.LongTensor(seq), torch.LongTensor(answer)
 
 
-class LRUT
+class LRUTestDataset(data_utils.Dataset):
+    def __init__(self, args, u2seq,
