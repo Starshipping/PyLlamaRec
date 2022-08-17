@@ -153,4 +153,5 @@ class LRUValidDataset(data_utils.Dataset):
 
 
 class LRUTestDataset(data_utils.Dataset):
-    def __init__(self, args, u2seq,
+    def __init__(self, args, u2seq, u2val, u2answer, max_len, rng, subset_users=None):
+        self.args = 
