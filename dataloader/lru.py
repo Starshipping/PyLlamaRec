@@ -162,4 +162,8 @@ class LRUTestDataset(data_utils.Dataset):
         self.users = [u for u in users if len(u2val[u]) > 0 and len(u2answer[u]) > 0]
         self.max_len = max_len
         self.rng = rng
-   
+        
+        if subset_users is not None:
+            self.users = subset_users
+
+    d
