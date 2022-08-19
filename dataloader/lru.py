@@ -157,4 +157,6 @@ class LRUTestDataset(data_utils.Dataset):
         self.args = args
         self.u2seq = u2seq
         self.u2val = u2val
-        sel
+        self.u2answer = u2answer
+        users = sorted(self.u2seq.keys())
+  
