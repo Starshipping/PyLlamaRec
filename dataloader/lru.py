@@ -159,4 +159,4 @@ class LRUTestDataset(data_utils.Dataset):
         self.u2val = u2val
         self.u2answer = u2answer
         users = sorted(self.u2seq.keys())
-  
+        self.users = [u for u in users if len(u2val[u]) > 0 and len(u2a
