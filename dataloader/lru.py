@@ -166,4 +166,7 @@ class LRUTestDataset(data_utils.Dataset):
         if subset_users is not None:
             self.users = subset_users
 
-    d
+    def __len__(self):
+        return len(self.users)
+
+    def __getitem__(self, index):
