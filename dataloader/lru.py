@@ -174,4 +174,6 @@ class LRUTestDataset(data_utils.Dataset):
         seq = self.u2seq[user] + self.u2val[user]
         answer = self.u2answer[user]
 
-        seq = seq[-self.
+        seq = seq[-self.max_len:]
+        padding_len = self.max_len - len(seq)
+        seq = [0
