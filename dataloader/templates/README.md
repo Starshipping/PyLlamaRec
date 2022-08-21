@@ -4,4 +4,6 @@ This directory contains template styles for the prompts used to finetune LoRA mo
 
 ## Format
 
-A template is described via
+A template is described via a JSON file with the following keys:
+
+- `prompt_input`: The template to
