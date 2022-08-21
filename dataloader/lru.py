@@ -176,4 +176,6 @@ class LRUTestDataset(data_utils.Dataset):
 
         seq = seq[-self.max_len:]
         padding_len = self.max_len - len(seq)
-        seq = [0
+        seq = [0] * padding_len + seq
+
+        return torch.LongTensor(seq), torch
