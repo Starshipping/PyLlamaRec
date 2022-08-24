@@ -11,4 +11,8 @@ A template is described via a JSON file with the following keys:
 - `description`: A short description of the template, with possible use cases.
 - `response_split`: The text to use as separator when cutting real response from the model output.
 
-No `{response}` placeholder was used, since the response is always the last element of the template and is just 
+No `{response}` placeholder was used, since the response is always the last element of the template and is just to be concatenated to the rest.
+
+## Example template
+
+The default template,
