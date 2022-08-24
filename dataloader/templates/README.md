@@ -15,4 +15,8 @@ No `{response}` placeholder was used, since the response is always the last elem
 
 ## Example template
 
-The default template,
+The default template, used unless otherwise specified, is `alpaca.json`
+
+```json
+{
+    "desc
