@@ -20,4 +20,4 @@ The default template, used unless otherwise specified, is `alpaca.json`
 ```json
 {
     "description": "Template used by Alpaca-LoRA.",
-    "prompt_input": "Below is an in
+    "prompt_input": "Below is an instruction that describes a task, paired with an input that provides further context. Writ
