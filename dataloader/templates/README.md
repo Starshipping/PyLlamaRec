@@ -27,4 +27,8 @@ The default template, used unless otherwise specified, is `alpaca.json`
 
 ```
 
-## Curren
+## Current templates
+
+### alpaca
+
+Default template used for generic LoRA fine tune
