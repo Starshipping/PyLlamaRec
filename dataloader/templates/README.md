@@ -31,4 +31,8 @@ The default template, used unless otherwise specified, is `alpaca.json`
 
 ### alpaca
 
-Default template used for generic LoRA fine tune
+Default template used for generic LoRA fine tunes so far.
+
+### alpaca_legacy
+
+Legacy template used by the original alpaca repo
