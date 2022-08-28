@@ -38,3 +38,5 @@ Default template used for generic LoRA fine tunes so far.
 Legacy template used by the original alpaca repo, with no `\n` after the response field. Kept for reference and experiments.
 
 ### alpaca_short
+
+A trimmed down alpaca template which seems to perform just as well and spare some tokens. Mod
