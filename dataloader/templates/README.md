@@ -35,4 +35,6 @@ Default template used for generic LoRA fine tunes so far.
 
 ### alpaca_legacy
 
-Legacy template used by the original alpaca repo
+Legacy template used by the original alpaca repo, with no `\n` after the response field. Kept for reference and experiments.
+
+### alpaca_short
