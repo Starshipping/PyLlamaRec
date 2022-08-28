@@ -39,4 +39,4 @@ Legacy template used by the original alpaca repo, with no `\n` after the respons
 
 ### alpaca_short
 
-A trimmed down alpaca template which seems to perform just as well and spare some tokens. Mod
+A trimmed down alpaca template which seems to perform just as well and spare some tokens. Models created with the default template seem to be queryable by the short tem
