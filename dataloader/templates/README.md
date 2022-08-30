@@ -43,4 +43,4 @@ A trimmed down alpaca template which seems to perform just as well and spare som
 
 ### vigogne
 
-The default alpaca temp
+The default alpaca template, translated to french. This template was used to train the "Vigogne" LoRA and is
