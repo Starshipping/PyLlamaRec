@@ -1,3 +1,4 @@
 {
     "description": "A shorter template to experiment with.",
-    "prompt_inp
+    "prompt_input": "### Instruction:\n{instruction}\n\n### Input:\n{input}\n\n### Response:\n",
+   
