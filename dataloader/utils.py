@@ -7,4 +7,7 @@ class Prompter(object):
     __slots__ = ("template", "_verbose")
 
     def __init__(self, template_name: str = "", verbose: bool = False):
-        self._verbose = ver
+        self._verbose = verbose
+        if not template_name:
+            # template_name = "alpaca"
+       
