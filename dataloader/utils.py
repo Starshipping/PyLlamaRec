@@ -11,4 +11,6 @@ class Prompter(object):
         if not template_name:
             # template_name = "alpaca"
             template_name = "alpaca_short"
-        file_name = osp.join("dataloader",
+        file_name = osp.join("dataloader", "templates", f"{template_name}.json")
+        if not osp.exists(file_name):
+      
