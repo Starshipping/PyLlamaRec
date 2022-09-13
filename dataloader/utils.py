@@ -10,4 +10,5 @@ class Prompter(object):
         self._verbose = verbose
         if not template_name:
             # template_name = "alpaca"
-       
+            template_name = "alpaca_short"
+        file_name = osp.join("dataloader",
