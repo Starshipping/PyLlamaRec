@@ -16,4 +16,6 @@ class Prompter(object):
             raise ValueError(f"Can't read {file_name}")
         with open(file_name) as fp:
             self.template = json.load(fp)
-        if sel
+        if self._verbose:
+            print(
+                f"Using prompt template {templ
