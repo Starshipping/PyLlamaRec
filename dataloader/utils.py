@@ -13,4 +13,5 @@ class Prompter(object):
             template_name = "alpaca_short"
         file_name = osp.join("dataloader", "templates", f"{template_name}.json")
         if not osp.exists(file_name):
-      
+            raise ValueError(f"Can't read {file_name}")
+        with 
