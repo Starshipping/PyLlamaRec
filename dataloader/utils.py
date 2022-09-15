@@ -21,4 +21,7 @@ class Prompter(object):
                 f"Using prompt template {template_name}: {self.template['description']}"
             )
 
-    def generate_prompt
+    def generate_prompt(
+        self,
+        instruction: str,
+        input: Union[
