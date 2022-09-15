@@ -18,4 +18,7 @@ class Prompter(object):
             self.template = json.load(fp)
         if self._verbose:
             print(
-                f"Using prompt template {templ
+                f"Using prompt template {template_name}: {self.template['description']}"
+            )
+
+    def generate_prompt
