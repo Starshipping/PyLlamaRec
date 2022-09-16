@@ -29,4 +29,7 @@ class Prompter(object):
     ) -> str:
         if input:
             res = self.template["prompt_input"].format(
-       
+                instruction=instruction, input=input
+            )
+        else:
+            re
