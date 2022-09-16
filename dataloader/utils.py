@@ -24,4 +24,7 @@ class Prompter(object):
     def generate_prompt(
         self,
         instruction: str,
-        input: Union[
+        input: Union[None, str] = None,
+        label: Union[None, str] = None,
+    ) -> str:
+        if in
