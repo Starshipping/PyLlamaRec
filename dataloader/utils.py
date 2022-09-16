@@ -27,4 +27,6 @@ class Prompter(object):
         input: Union[None, str] = None,
         label: Union[None, str] = None,
     ) -> str:
-        if in
+        if input:
+            res = self.template["prompt_input"].format(
+       
