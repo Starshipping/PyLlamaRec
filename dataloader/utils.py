@@ -32,4 +32,5 @@ class Prompter(object):
                 instruction=instruction, input=input
             )
         else:
-            re
+            res = self.template["prompt_no_input"].format(
+                instruction=instru
