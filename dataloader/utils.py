@@ -41,3 +41,5 @@ class Prompter(object):
             print(res)
         return res
 
+    def get_response(self, output: str) -> str:
+        return 
