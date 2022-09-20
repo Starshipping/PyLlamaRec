@@ -9,4 +9,6 @@ DATASETS = {
 }
 
 
-def dataset_factor
+def dataset_factory(args):
+    dataset = DATASETS[args.dataset_code]
+    return dataset(args)
