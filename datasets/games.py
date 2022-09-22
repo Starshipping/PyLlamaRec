@@ -17,15 +17,16 @@ from tqdm import tqdm
 tqdm.pandas()
 
 
-class BeautyDataset(AbstractDataset):
+class GamesDataset(AbstractDataset):
     @classmethod
     def code(cls):
-        return 'beauty'
+        return 'games'
 
     @classmethod
     def url(cls):
-        return ['http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/ratings_Beauty.csv',
-                'http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/meta_Beauty.json.gz']
+        # meta_Video_Games.json.gz from snap.stanford.edu does not contain full meta info
+        return ['http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/ratings_Video_Games.csv',
+                'https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Video_Games.json.gz']
 
     @classmethod
     def zip_file_content_is_folder(cls):
@@ -33,7 +34,7 @@ class BeautyDataset(AbstractDataset):
 
     @classmethod
     def all_raw_file_names(cls):
-        return ['beauty.csv', 'beauty_meta.json.gz']
+        return ['games.csv', 'games_meta.json.gz']
 
     def maybe_download_raw_dataset(self):
         folder_path = self._get_rawdata_folder_path()
@@ -71,26 +72,3 @@ class BeautyDataset(AbstractDataset):
                    'test': test,
                    'meta': meta,
                    'umap': umap,
-                   'smap': smap}
-        with dataset_path.open('wb') as f:
-            pickle.dump(dataset, f)
-
-    def load_ratings_df(self):
-        folder_path = self._get_rawdata_folder_path()
-        file_path = folder_path.joinpath(self.all_raw_file_names()[0])
-        df = pd.read_csv(file_path, header=None)
-        df.columns = ['uid', 'sid', 'rating', 'timestamp']
-        return df
-    
-    def load_meta_dict(self):
-        folder_path = self._get_rawdata_folder_path()
-        file_path = folder_path.joinpath(self.all_raw_file_names()[1])
-
-        meta_dict = {}
-        with gzip.open(file_path, 'rb') as f:
-            for line in f:
-                item = eval(line)
-                if 'title' in item and len(item['title']) > 0:
-                    meta_dict[item['asin'].strip()] = item['title'].strip()
-        
-        return meta_dict
