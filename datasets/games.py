@@ -72,3 +72,26 @@ class GamesDataset(AbstractDataset):
                    'test': test,
                    'meta': meta,
                    'umap': umap,
+                   'smap': smap}
+        with dataset_path.open('wb') as f:
+            pickle.dump(dataset, f)
+
+    def load_ratings_df(self):
+        folder_path = self._get_rawdata_folder_path()
+        file_path = folder_path.joinpath(self.all_raw_file_names()[0])
+        df = pd.read_csv(file_path, header=None)
+        df.columns = ['uid', 'sid', 'rating', 'timestamp']
+        return df
+    
+    def load_meta_dict(self):
+        folder_path = self._get_rawdata_folder_path()
+        file_path = folder_path.joinpath(self.all_raw_file_names()[1])
+
+        meta_dict = {}
+        with gzip.open(file_path, 'rb') as f:
+            for line in f:
+                item = eval(line)
+                if 'title' in item and len(item['title']) > 0:
+                    meta_dict[item['asin'].strip()] = item['title'].strip()
+        
+        return meta_dict
