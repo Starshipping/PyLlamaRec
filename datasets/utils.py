@@ -26,3 +26,5 @@ def unzip(zippath, savepath):
 def unziptargz(zippath, savepath):
     print("Extracting data...")
     f = tarfile.open(zippath)
+    f.extractall(savepath)
+    f.close()
