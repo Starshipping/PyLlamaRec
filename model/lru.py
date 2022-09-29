@@ -9,4 +9,5 @@ class LRURec(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.args = args
-        self.em
+        self.embedding = LRUEmbedding(self.args)
+        self.model = LRUModel(
