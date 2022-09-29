@@ -6,4 +6,7 @@ import numpy as np
 
 
 class LRURec(nn.Module):
-    def __init__(s
+    def __init__(self, args):
+        super().__init__()
+        self.args = args
+        self.em
