@@ -15,4 +15,5 @@ class LRURec(nn.Module):
 
     def truncated_normal_init(self, mean=0, std=0.02, lower=-0.04, upper=0.04):
         with torch.no_grad():
-            l = (1. + math.erf(((lower - mean) / std) /
+            l = (1. + math.erf(((lower - mean) / std) / math.sqrt(2.))) / 2.
+            u = (1. + math.erf(((upper - mean) / std) / mat
