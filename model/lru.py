@@ -10,4 +10,7 @@ class LRURec(nn.Module):
         super().__init__()
         self.args = args
         self.embedding = LRUEmbedding(self.args)
-        self.model = LRUModel(
+        self.model = LRUModel(self.args)
+        self.truncated_normal_init()
+
+    def truncated_normal_init(self, mean=
