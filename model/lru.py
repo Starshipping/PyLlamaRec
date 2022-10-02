@@ -19,4 +19,5 @@ class LRURec(nn.Module):
             u = (1. + math.erf(((upper - mean) / std) / math.sqrt(2.))) / 2.
 
             for n, p in self.named_parameters():
-            
+                if not 'layer_norm' in n and 'params_log' not in n:
+                    if torch.is_co
