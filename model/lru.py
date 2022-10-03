@@ -20,4 +20,5 @@ class LRURec(nn.Module):
 
             for n, p in self.named_parameters():
                 if not 'layer_norm' in n and 'params_log' not in n:
-                    if torch.is_co
+                    if torch.is_complex(p):
+                        p.real.uniform_(2 * l - 1
