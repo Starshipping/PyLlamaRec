@@ -24,4 +24,6 @@ class LRURec(nn.Module):
                         p.real.uniform_(2 * l - 1, 2 * u - 1)
                         p.imag.uniform_(2 * l - 1, 2 * u - 1)
                         p.real.erfinv_()
-                        p.imag.erfinv
+                        p.imag.erfinv_()
+                        p.real.mul_(std * math.sqrt(2.))
+        
