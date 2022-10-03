@@ -23,4 +23,5 @@ class LRURec(nn.Module):
                     if torch.is_complex(p):
                         p.real.uniform_(2 * l - 1, 2 * u - 1)
                         p.imag.uniform_(2 * l - 1, 2 * u - 1)
- 
+                        p.real.erfinv_()
+                        p.imag.erfinv
