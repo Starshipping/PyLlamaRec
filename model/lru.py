@@ -27,4 +27,6 @@ class LRURec(nn.Module):
                         p.imag.erfinv_()
                         p.real.mul_(std * math.sqrt(2.))
                         p.imag.mul_(std * math.sqrt(2.))
-                        p.r
+                        p.real.add_(mean)
+                        p.imag.add_(mean)
+               
