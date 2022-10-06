@@ -36,4 +36,5 @@ class LRURec(nn.Module):
                         p.add_(mean)
 
     def forward(self, x):
-  
+        x, mask = self.embedding(x)
+        scores = self.mo
