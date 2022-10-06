@@ -31,4 +31,6 @@ class LRURec(nn.Module):
                         p.imag.add_(mean)
                     else:
                         p.uniform_(2 * l - 1, 2 * u - 1)
-        
+                        p.erfinv_()
+                        p.mul_(std * math.sqrt(2.))
+  
