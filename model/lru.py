@@ -41,4 +41,6 @@ class LRURec(nn.Module):
         return scores
 
 
-class LRUEmb
+class LRUEmbedding(nn.Module):
+    def __init__(self, args):
+        super().__init__()
