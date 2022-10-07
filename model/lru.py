@@ -37,4 +37,8 @@ class LRURec(nn.Module):
 
     def forward(self, x):
         x, mask = self.embedding(x)
-        scores = self.mo
+        scores = self.model(x, self.embedding.token.weight, mask)
+        return scores
+
+
+class LRUEmb
