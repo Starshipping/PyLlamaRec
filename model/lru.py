@@ -48,4 +48,5 @@ class LRUEmbedding(nn.Module):
         embed_size = args.bert_hidden_units
         
         self.token = nn.Embedding(vocab_size, embed_size)
- 
+        self.layer_norm = nn.LayerNorm(embed_size)
+        self.embed_dropout = nn
