@@ -45,4 +45,7 @@ class LRUEmbedding(nn.Module):
     def __init__(self, args):
         super().__init__()
         vocab_size = args.num_items + 1
-        embed_size = args.bert_hidden
+        embed_size = args.bert_hidden_units
+        
+        self.token = nn.Embedding(vocab_size, embed_size)
+ 
