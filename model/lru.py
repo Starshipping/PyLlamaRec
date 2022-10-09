@@ -54,4 +54,6 @@ class LRUEmbedding(nn.Module):
     def get_mask(self, x):
         return (x > 0)
 
- 
+    def forward(self, x):
+        mask = self.get_mask(x)
+        x = self.token(x)
