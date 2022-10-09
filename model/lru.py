@@ -49,4 +49,9 @@ class LRUEmbedding(nn.Module):
         
         self.token = nn.Embedding(vocab_size, embed_size)
         self.layer_norm = nn.LayerNorm(embed_size)
-        self.embed_dropout = nn
+        self.embed_dropout = nn.Dropout(args.bert_dropout)
+
+    def get_mask(self, x):
+        return (x > 0)
+
+ 
