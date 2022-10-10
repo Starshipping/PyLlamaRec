@@ -60,4 +60,6 @@ class LRUEmbedding(nn.Module):
         return self.layer_norm(self.embed_dropout(x)), mask
 
 
-cl
+class LRUModel(nn.Module):
+    def __init__(self, args):
+        super().__init__(
