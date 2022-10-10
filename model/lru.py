@@ -57,3 +57,7 @@ class LRUEmbedding(nn.Module):
     def forward(self, x):
         mask = self.get_mask(x)
         x = self.token(x)
+        return self.layer_norm(self.embed_dropout(x)), mask
+
+
+cl
