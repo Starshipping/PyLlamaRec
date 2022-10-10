@@ -62,4 +62,6 @@ class LRUEmbedding(nn.Module):
 
 class LRUModel(nn.Module):
     def __init__(self, args):
-        super().__init__(
+        super().__init__()
+        self.args = args
+        self.hidden_size = args.bert_hidden_
