@@ -67,4 +67,5 @@ class LRUModel(nn.Module):
         self.hidden_size = args.bert_hidden_units
         layers = args.bert_num_blocks
 
-        self.lru_block
+        self.lru_blocks = nn.ModuleList([LRUBlock(self.args) for _ in range(layers)])
+ 
