@@ -68,4 +68,6 @@ class LRUModel(nn.Module):
         layers = args.bert_num_blocks
 
         self.lru_blocks = nn.ModuleList([LRUBlock(self.args) for _ in range(layers)])
- 
+        self.bias = torch.nn.Parameter(torch.zeros(args.num_items + 1))
+
+   
