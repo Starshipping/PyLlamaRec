@@ -70,4 +70,5 @@ class LRUModel(nn.Module):
         self.lru_blocks = nn.ModuleList([LRUBlock(self.args) for _ in range(layers)])
         self.bias = torch.nn.Parameter(torch.zeros(args.num_items + 1))
 
-   
+    def forward(self, x, embedding_weight, mask):
+        # left paddin
