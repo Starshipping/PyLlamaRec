@@ -71,4 +71,6 @@ class LRUModel(nn.Module):
         self.bias = torch.nn.Parameter(torch.zeros(args.num_items + 1))
 
     def forward(self, x, embedding_weight, mask):
-        # left paddin
+        # left padding to the power of 2
+        seq_len = x.size(1)
+        log2_L = int(np.ceil(np.log2(seq_
