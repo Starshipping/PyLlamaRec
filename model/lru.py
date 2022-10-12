@@ -73,4 +73,5 @@ class LRUModel(nn.Module):
     def forward(self, x, embedding_weight, mask):
         # left padding to the power of 2
         seq_len = x.size(1)
-        log2_L = int(np.ceil(np.log2(seq_
+        log2_L = int(np.ceil(np.log2(seq_len)))
+        x = F.pad(x, (0, 0, 2 ** log2_L - x.size(1), 0, 
