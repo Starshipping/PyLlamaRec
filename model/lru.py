@@ -78,4 +78,6 @@ class LRUModel(nn.Module):
         mask_ = F.pad(mask, (2 ** log2_L - mask.size(1), 0, 0, 0))
 
         # LRU blocks with pffn
-        for lru_block in self.lru_
+        for lru_block in self.lru_blocks:
+            x = lru_block.forward(x, mask_)
+        x = x[:, -seq_len:]  # B x L x
