@@ -75,4 +75,7 @@ class LRUModel(nn.Module):
         seq_len = x.size(1)
         log2_L = int(np.ceil(np.log2(seq_len)))
         x = F.pad(x, (0, 0, 2 ** log2_L - x.size(1), 0, 0, 0))
-        mask_ = F.pad(mask, (2 ** log2_L - mask.size(1), 0
+        mask_ = F.pad(mask, (2 ** log2_L - mask.size(1), 0, 0, 0))
+
+        # LRU blocks with pffn
+        for lru_block in self.lru_
