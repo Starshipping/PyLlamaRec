@@ -90,4 +90,6 @@ class LRUBlock(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.args = args
-        hidden_size = args.be
+        hidden_size = args.bert_hidden_units
+        self.lru_layer = LRULayer(
+            d_mo
