@@ -80,4 +80,6 @@ class LRUModel(nn.Module):
         # LRU blocks with pffn
         for lru_block in self.lru_blocks:
             x = lru_block.forward(x, mask_)
-        x = x[:, -seq_len:]  # B x L x
+        x = x[:, -seq_len:]  # B x L x D (64)
+
+        scores = torch.matmul(x, embedding_weight.permute(1, 0)) 
