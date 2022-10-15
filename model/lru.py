@@ -82,4 +82,9 @@ class LRUModel(nn.Module):
             x = lru_block.forward(x, mask_)
         x = x[:, -seq_len:]  # B x L x D (64)
 
-        scores = torch.matmul(x, embedding_weight.permute(1, 0)) 
+        scores = torch.matmul(x, embedding_weight.permute(1, 0)) + self.bias
+        return scores
+
+
+class LRUBlock(nn.Module):
+    def __init__(sel
