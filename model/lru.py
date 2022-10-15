@@ -87,4 +87,7 @@ class LRUModel(nn.Module):
 
 
 class LRUBlock(nn.Module):
-    def __init__(sel
+    def __init__(self, args):
+        super().__init__()
+        self.args = args
+        hidden_size = args.be
