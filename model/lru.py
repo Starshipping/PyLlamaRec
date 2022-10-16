@@ -92,4 +92,5 @@ class LRUBlock(nn.Module):
         self.args = args
         hidden_size = args.bert_hidden_units
         self.lru_layer = LRULayer(
-            d_mo
+            d_model=hidden_size, dropout=args.bert_attn_dropout)
+        sel
