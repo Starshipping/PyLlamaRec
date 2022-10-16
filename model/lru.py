@@ -94,4 +94,6 @@ class LRUBlock(nn.Module):
         self.lru_layer = LRULayer(
             d_model=hidden_size, dropout=args.bert_attn_dropout)
         self.feed_forward = PositionwiseFeedForward(
-            d_model=hidden_s
+            d_model=hidden_size, d_ff=hidden_size*4, dropout=args.bert_dropout)
+    
+    def
