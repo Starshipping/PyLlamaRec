@@ -98,4 +98,9 @@ class LRUBlock(nn.Module):
     
     def forward(self, x, mask):
         x = self.lru_layer(x, mask)
-        x = self.feed
+        x = self.feed_forward(x)
+        return x
+    
+
+class LRULayer(nn.Module):
+    def
