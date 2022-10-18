@@ -103,4 +103,6 @@ class LRUBlock(nn.Module):
     
 
 class LRULayer(nn.Module):
-    def
+    def __init__(self,
+                 d_model,
+                 
