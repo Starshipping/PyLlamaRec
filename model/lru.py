@@ -105,4 +105,7 @@ class LRUBlock(nn.Module):
 class LRULayer(nn.Module):
     def __init__(self,
                  d_model,
-                 
+                 dropout=0.1,
+                 use_bias=True,
+                 r_min=0.8,
+        
