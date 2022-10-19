@@ -110,4 +110,6 @@ class LRULayer(nn.Module):
                  r_min=0.8,
                  r_max=0.99):
         super().__init__()
-        self.embed
+        self.embed_size = d_model
+        self.hidden_size = 2 * d_model
+        self.use_bias = 
