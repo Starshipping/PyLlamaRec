@@ -108,4 +108,6 @@ class LRULayer(nn.Module):
                  dropout=0.1,
                  use_bias=True,
                  r_min=0.8,
-        
+                 r_max=0.99):
+        super().__init__()
+        self.embed
