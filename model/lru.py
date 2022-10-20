@@ -112,4 +112,7 @@ class LRULayer(nn.Module):
         super().__init__()
         self.embed_size = d_model
         self.hidden_size = 2 * d_model
-        self.use_bias = 
+        self.use_bias = use_bias
+
+        # init nu, theta, gamma
+        u1 = torch.rand(self.hidden_si
