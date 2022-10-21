@@ -115,4 +115,6 @@ class LRULayer(nn.Module):
         self.use_bias = use_bias
 
         # init nu, theta, gamma
-        u1 = torch.rand(self.hidden_si
+        u1 = torch.rand(self.hidden_size)
+        u2 = torch.rand(self.hidden_size)
+        nu_log = torch.log(-0.5 * torch.log(u1 * (r_max
