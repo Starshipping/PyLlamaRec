@@ -117,4 +117,5 @@ class LRULayer(nn.Module):
         # init nu, theta, gamma
         u1 = torch.rand(self.hidden_size)
         u2 = torch.rand(self.hidden_size)
-        nu_log = torch.log(-0.5 * torch.log(u1 * (r_max
+        nu_log = torch.log(-0.5 * torch.log(u1 * (r_max ** 2 - r_min ** 2) + r_min ** 2))
+        theta_log = torch.log(u2 * torch.t
