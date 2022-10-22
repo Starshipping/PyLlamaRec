@@ -119,4 +119,5 @@ class LRULayer(nn.Module):
         u2 = torch.rand(self.hidden_size)
         nu_log = torch.log(-0.5 * torch.log(u1 * (r_max ** 2 - r_min ** 2) + r_min ** 2))
         theta_log = torch.log(u2 * torch.tensor(np.pi) * 2)
-        diag_lambda = torch.exp(torch.complex(-torch.exp(nu_
+        diag_lambda = torch.exp(torch.complex(-torch.exp(nu_log), torch.exp(theta_log)))
+        gamma_log = torch.log(torch.sqrt(1 - torch.abs
