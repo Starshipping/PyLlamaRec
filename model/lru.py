@@ -120,4 +120,5 @@ class LRULayer(nn.Module):
         nu_log = torch.log(-0.5 * torch.log(u1 * (r_max ** 2 - r_min ** 2) + r_min ** 2))
         theta_log = torch.log(u2 * torch.tensor(np.pi) * 2)
         diag_lambda = torch.exp(torch.complex(-torch.exp(nu_log), torch.exp(theta_log)))
-        gamma_log = torch.log(torch.sqrt(1 - torch.abs
+        gamma_log = torch.log(torch.sqrt(1 - torch.abs(diag_lambda) ** 2))
+        self.params_log = nn.Parameter(torch.vstack((nu_log,
