@@ -125,4 +125,5 @@ class LRULayer(nn.Module):
 
         # Init B, C, D
         self.in_proj = nn.Linear(self.embed_size, self.hidden_size, bias=use_bias).to(torch.cfloat)
-        self.out_proj = nn.Linear(self.hidden_size, self.embed_size, bias=use_b
+        self.out_proj = nn.Linear(self.hidden_size, self.embed_size, bias=use_bias).to(torch.cfloat)
+        # self.out_vector = nn.Parameter(tor
