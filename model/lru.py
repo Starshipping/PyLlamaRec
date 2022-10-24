@@ -124,4 +124,5 @@ class LRULayer(nn.Module):
         self.params_log = nn.Parameter(torch.vstack((nu_log, theta_log, gamma_log)))
 
         # Init B, C, D
-        self.in_proj = nn.Li
+        self.in_proj = nn.Linear(self.embed_size, self.hidden_size, bias=use_bias).to(torch.cfloat)
+      
