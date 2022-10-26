@@ -133,4 +133,5 @@ class LRULayer(nn.Module):
         self.dropout = nn.Dropout(p=dropout)
         self.layer_norm = nn.LayerNorm(self.embed_size)
 
-    d
+    def lru_parallel(self, i, h, lamb, mask, B, L, D):
+        # Parallel algorit
