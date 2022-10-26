@@ -130,4 +130,7 @@ class LRULayer(nn.Module):
         self.out_vector = nn.Identity()
         
         # Dropout and layer norm
-        self.dropout = nn.Drop
+        self.dropout = nn.Dropout(p=dropout)
+        self.layer_norm = nn.LayerNorm(self.embed_size)
+
+    d
