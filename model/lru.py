@@ -134,4 +134,4 @@ class LRULayer(nn.Module):
         self.layer_norm = nn.LayerNorm(self.embed_size)
 
     def lru_parallel(self, i, h, lamb, mask, B, L, D):
-        # Parallel algorit
+        # Parallel algorithm, see: https://kexue.fm/archives/9554#%E5%B9%B6%E8%A1%8C%E5%8C%
