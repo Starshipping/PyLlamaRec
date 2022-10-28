@@ -138,4 +138,5 @@ class LRULayer(nn.Module):
         # The original implementation is slightly slower and does not consider 0 padding
         l = 2 ** i
         h = h.reshape(B * L // l, l, D)  # (B, L, D) -> (B * L // 2, 2, D)
-        mask_ = mask.reshape(B * L /
+        mask_ = mask.reshape(B * L // l, l)  # (B, L) -> (B * L // 2, 2)
+        h1, h2 = h[:, :l // 2], h[:, l // 2:]  
