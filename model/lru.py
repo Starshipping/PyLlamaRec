@@ -137,4 +137,5 @@ class LRULayer(nn.Module):
         # Parallel algorithm, see: https://kexue.fm/archives/9554#%E5%B9%B6%E8%A1%8C%E5%8C%96
         # The original implementation is slightly slower and does not consider 0 padding
         l = 2 ** i
-        h = h.reshape(B * L // l, l, D)  #
+        h = h.reshape(B * L // l, l, D)  # (B, L, D) -> (B * L // 2, 2, D)
+        mask_ = mask.reshape(B * L /
