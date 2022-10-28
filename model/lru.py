@@ -139,4 +139,6 @@ class LRULayer(nn.Module):
         l = 2 ** i
         h = h.reshape(B * L // l, l, D)  # (B, L, D) -> (B * L // 2, 2, D)
         mask_ = mask.reshape(B * L // l, l)  # (B, L) -> (B * L // 2, 2)
-        h1, h2 = h[:, :l // 2], h[:, l // 2:]  
+        h1, h2 = h[:, :l // 2], h[:, l // 2:]  # Divide data in half
+
+        if i > 1: lamb = torch.cat((l
