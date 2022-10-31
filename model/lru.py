@@ -150,4 +150,7 @@ class LRULayer(nn.Module):
         # compute bu and lambda
         nu, theta, gamma = torch.exp(self.params_log).split((1, 1, 1))
         lamb = torch.exp(torch.complex(-nu, theta))
-        h = self.in_proj(x.to(torch
+        h = self.in_proj(x.to(torch.cfloat)) * gamma  # bu
+        
+        # compute h in parallel
+        log2_L = int(np.ceil(
