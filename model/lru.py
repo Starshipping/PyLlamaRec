@@ -153,4 +153,6 @@ class LRULayer(nn.Module):
         h = self.in_proj(x.to(torch.cfloat)) * gamma  # bu
         
         # compute h in parallel
-        log2_L = int(np.ceil(
+        log2_L = int(np.ceil(np.log2(h.size(1))))
+        B, L, D = h.size(0), h.size(1), h.size(2)
+        
