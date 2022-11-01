@@ -156,4 +156,5 @@ class LRULayer(nn.Module):
         log2_L = int(np.ceil(np.log2(h.size(1))))
         B, L, D = h.size(0), h.size(1), h.size(2)
         for i in range(log2_L):
-            h, lamb = self.lru_parallel(i +
+            h, lamb = self.lru_parallel(i + 1, h, lamb, mask, B, L, D)
+        x = self.dropout(self.out_proj(h).real) + self.out_v
