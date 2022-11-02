@@ -162,4 +162,5 @@ class LRULayer(nn.Module):
     
 
 class PositionwiseFeedForward(nn.Module):
-    def __
+    def __init__(self, d_model, d_ff, dropout=0.1):
+        super().__
