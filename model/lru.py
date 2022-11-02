@@ -158,4 +158,8 @@ class LRULayer(nn.Module):
         for i in range(log2_L):
             h, lamb = self.lru_parallel(i + 1, h, lamb, mask, B, L, D)
         x = self.dropout(self.out_proj(h).real) + self.out_vector(x)
-        return self.layer_norm(x)  # residual connection introduc
+        return self.layer_norm(x)  # residual connection introduced above 
+    
+
+class PositionwiseFeedForward(nn.Module):
+    def __
