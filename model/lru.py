@@ -170,4 +170,5 @@ class PositionwiseFeedForward(nn.Module):
         self.dropout = nn.Dropout(dropout)
         self.layer_norm = nn.LayerNorm(d_model)
 
-    def 
+    def forward(self, x):
+        x_ = self.dropout(self.activation(self.w_1(x))
