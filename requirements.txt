@@ -1,1 +1,2 @@
-# This file may be used to c
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <thi
