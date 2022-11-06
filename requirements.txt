@@ -13,4 +13,6 @@ altair=4.2.2=pypi_0
 aniso8601=9.0.1=pypi_0
 antlr4-python3-runtime=4.9.3=pypi_0
 anyio=3.6.2=pypi_0
-appdirs
+appdirs=1.4.4=pypi_0
+asttokens=2.2.1=pypi_0
+async-timeout=4.0.2=pypi_0
