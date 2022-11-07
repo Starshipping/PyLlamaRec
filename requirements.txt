@@ -19,4 +19,7 @@ async-timeout=4.0.2=pypi_0
 attrdict=2.0.1=pypi_0
 attrs=23.1.0=pypi_0
 audioread=3.0.0=pypi_0
-b
+babel=2.12.1=pypi_0
+backcall=0.2.0=pypi_0
+beautifulsoup4=4.12.2=pypi_0
+bitsan
