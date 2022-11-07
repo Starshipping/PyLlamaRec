@@ -22,4 +22,8 @@ audioread=3.0.0=pypi_0
 babel=2.12.1=pypi_0
 backcall=0.2.0=pypi_0
 beautifulsoup4=4.12.2=pypi_0
-bitsan
+bitsandbytes=0.41.1=pypi_0
+black=19.10b0=pypi_0
+blas=1.0=mkl
+boto3=1.26.160=pypi_0
+botocore=1.29.
