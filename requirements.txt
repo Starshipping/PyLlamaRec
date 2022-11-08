@@ -26,4 +26,6 @@ bitsandbytes=0.41.1=pypi_0
 black=19.10b0=pypi_0
 blas=1.0=mkl
 boto3=1.26.160=pypi_0
-botocore=1.29.
+botocore=1.29.160=pypi_0
+braceexpand=0.1.7=pypi_0
+brotlipy=0.7.0=py310h7f8727e_10
