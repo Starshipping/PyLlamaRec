@@ -41,4 +41,6 @@ clip=1.0=pypi_0
 colorama=0.4.6=pypi_0
 comm=0.1.3=pypi_0
 contourpy=1.0.7=pypi_0
-cryp
+cryptography=39.0.1=py310h9ce1e76_0
+cuda-cudart=11.8.89=0
+cuda-cupti=1
