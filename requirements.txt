@@ -49,4 +49,8 @@ cuda-nvrtc=11.8.89=0
 cuda-nvtx=11.8.86=0
 cuda-runtime=11.8.0=0
 cudatoolkit=11.8.0=h6a678d5_0
-cycler=0.11.0=pyp
+cycler=0.11.0=pypi_0
+cython=0.29.35=pypi_0
+datasets=2.14.5=pypi_0
+debugpy=1.6.7=pypi_0
+decorator
