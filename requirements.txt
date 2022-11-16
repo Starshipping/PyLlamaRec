@@ -89,4 +89,7 @@ gdown=4.7.1=pypi_0
 giflib=5.2.1=h5eee18b_3
 gitdb=4.0.10=pypi_0
 gitpython=3.1.31=pypi_0
-gmp=6.2.1=h
+gmp=6.2.1=h295c915_3
+gmpy2=2.1.2=py310heeb90bb_0
+gnutls=3.6.15=he1e5248_0
+google-
