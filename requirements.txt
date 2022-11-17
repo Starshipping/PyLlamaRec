@@ -92,4 +92,6 @@ gitpython=3.1.31=pypi_0
 gmp=6.2.1=h295c915_3
 gmpy2=2.1.2=py310heeb90bb_0
 gnutls=3.6.15=he1e5248_0
-google-
+google-auth=2.17.3=pypi_0
+google-auth-oauthlib=1.0.0=pypi_0
+gradio=3.28.
