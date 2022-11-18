@@ -97,4 +97,8 @@ google-auth-oauthlib=1.0.0=pypi_0
 gradio=3.28.3=pypi_0
 gradio-client=0.1.3=pypi_0
 grpcio=1.54.0=pypi_0
-h11=0.14.0=pypi_
+h11=0.14.0=pypi_0
+h5py=3.9.0=pypi_0
+httpcore=0.17.0=pypi_0
+httpx=0.24.0=pypi_0
+huggingface
