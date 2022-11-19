@@ -101,4 +101,6 @@ h11=0.14.0=pypi_0
 h5py=3.9.0=pypi_0
 httpcore=0.17.0=pypi_0
 httpx=0.24.0=pypi_0
-huggingface
+huggingface-hub=0.16.4=pypi_0
+hydra-core=1.2.0=pypi_0
+idna=3.4=py310h06a4308_0
