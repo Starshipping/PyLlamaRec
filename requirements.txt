@@ -104,3 +104,7 @@ httpx=0.24.0=pypi_0
 huggingface-hub=0.16.4=pypi_0
 hydra-core=1.2.0=pypi_0
 idna=3.4=py310h06a4308_0
+ijson=3.2.2=pypi_0
+imageio=2.28.0=pypi_0
+imagesize=1.4.1=pypi_0
+inflect=6.0.4=p
