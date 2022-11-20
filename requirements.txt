@@ -107,4 +107,7 @@ idna=3.4=py310h06a4308_0
 ijson=3.2.2=pypi_0
 imageio=2.28.0=pypi_0
 imagesize=1.4.1=pypi_0
-inflect=6.0.4=p
+inflect=6.0.4=pypi_0
+iniconfig=2.0.0=pypi_0
+intel-openmp=2021.4.0=h06a4308_3561
+ipadi
