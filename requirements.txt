@@ -113,4 +113,7 @@ intel-openmp=2021.4.0=h06a4308_3561
 ipadic=1.0.0=pypi_0
 ipykernel=6.23.3=pypi_0
 ipython=8.12.0=pypi_0
-ipywidgets=8.0.
+ipywidgets=8.0.6=pypi_0
+isort=5.12.0=pypi_0
+itsdangerous=2.1.2=pypi_0
+jedi=0.18.2=p
