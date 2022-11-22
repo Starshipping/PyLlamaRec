@@ -116,4 +116,8 @@ ipython=8.12.0=pypi_0
 ipywidgets=8.0.6=pypi_0
 isort=5.12.0=pypi_0
 itsdangerous=2.1.2=pypi_0
-jedi=0.18.2=p
+jedi=0.18.2=pypi_0
+jieba=0.42.1=pypi_0
+jinja2=3.1.2=py310h06a4308_0
+jiwer=2.5.2=pypi_0
+jmesp
