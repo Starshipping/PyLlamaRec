@@ -129,4 +129,7 @@ jupyter-core=5.3.1=pypi_0
 jupyterlab-widgets=3.0.7=pypi_0
 kaldi-python-io=1.2.2=pypi_0
 kaldiio=2.18.0=pypi_0
-kiwisolv
+kiwisolver=1.4.4=pypi_0
+kornia=0.6.12=pypi_0
+lame=3.100=h7b6447c_0
+latexcodec=2
