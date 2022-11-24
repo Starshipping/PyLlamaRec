@@ -138,4 +138,8 @@ lcms2=2.12=h3be6417_0
 ld_impl_linux-64=2.38=h1181459_1
 lerc=3.0=h295c915_0
 levenshtein=0.21.1=pypi_0
-libcublas=11.11.3.
+libcublas=11.11.3.6=0
+libcufft=10.9.0.58=0
+libcufile=1.6.0.25=0
+libcurand=10.3.2.56=0
+libcusolver=11.4.1.
