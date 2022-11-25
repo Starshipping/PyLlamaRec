@@ -142,4 +142,7 @@ libcublas=11.11.3.6=0
 libcufft=10.9.0.58=0
 libcufile=1.6.0.25=0
 libcurand=10.3.2.56=0
-libcusolver=11.4.1.
+libcusolver=11.4.1.48=0
+libcusparse=11.7.5.86=0
+libdeflate=1.17=h5eee18b_0
+libffi=3.4.2=
