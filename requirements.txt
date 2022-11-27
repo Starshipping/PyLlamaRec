@@ -157,4 +157,7 @@ librosa=0.10.0.post2=pypi_0
 libstdcxx-ng=11.2.0=h1234567_1
 libtasn1=4.16.0=h27cfd23_0
 libtiff=4.5.0=h6a678d5_2
-libunistring=0.9.10=h27cf
+libunistring=0.9.10=h27cfd23_0
+libuuid=1.41.5=h5eee18b_0
+libwebp=1.2.4=h11a3e52_1
+libwebp-base=1.2.4=
