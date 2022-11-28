@@ -171,4 +171,7 @@ lz4-c=1.9.4=h6a678d5_0
 markdown=3.4.3=pypi_0
 markdown-it-py=2.2.0=pypi_0
 markdown2=2.4.9=pypi_0
-markupsaf
+markupsafe=2.1.1=py310h7f8727e_0
+marshmallow=3.19.0=pypi_0
+matplotlib=3.7.1=pypi_0
+matplotlib-inli
