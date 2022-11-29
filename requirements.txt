@@ -174,4 +174,8 @@ markdown2=2.4.9=pypi_0
 markupsafe=2.1.1=py310h7f8727e_0
 marshmallow=3.19.0=pypi_0
 matplotlib=3.7.1=pypi_0
-matplotlib-inli
+matplotlib-inline=0.1.6=pypi_0
+mdit-py-plugins=0.3.3=pypi_0
+mdurl=0.1.2=pypi_0
+mecab-python3=1.0.5=pypi_0
+meg
