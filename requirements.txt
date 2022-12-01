@@ -186,4 +186,6 @@ mkl_random=1.2.2=py310h00e6091_0
 mpc=1.1.0=h10f8cd9_1
 mpfr=4.0.2=hb69a4c5_1
 mpmath=1.2.1=pypi_0
-msgpack=1.0.5=py
+msgpack=1.0.5=pypi_0
+multidict=6.0.4=pypi_0
+multiprocess=0.70.14=pypi_0
