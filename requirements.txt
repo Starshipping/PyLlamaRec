@@ -191,4 +191,7 @@ multidict=6.0.4=pypi_0
 multiprocess=0.70.14=pypi_0
 mypy-extensions=1.0.0=pypi_0
 ncurses=6.4=h6a678d5_0
-nest-asyncio=1
+nest-asyncio=1.5.6=pypi_0
+nettle=3.7.3=hbbd107a_1
+networkx=2.8.4=py310h06a4308_1
+nltk=3.8=py
