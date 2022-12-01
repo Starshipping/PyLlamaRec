@@ -189,3 +189,6 @@ mpmath=1.2.1=pypi_0
 msgpack=1.0.5=pypi_0
 multidict=6.0.4=pypi_0
 multiprocess=0.70.14=pypi_0
+mypy-extensions=1.0.0=pypi_0
+ncurses=6.4=h6a678d5_0
+nest-asyncio=1
