@@ -202,4 +202,7 @@ oauthlib=3.2.2=pypi_0
 omegaconf=2.2.3=pypi_0
 onnx=1.14.0=pypi_0
 openai=0.27.1=pypi_0
-op
+opencc=1.1.6=pypi_0
+opencv-python=4.7.0.72=pypi_0
+openh264=2.1.1=h4ff587b_0
+openprompt=1.0.1=pypi
