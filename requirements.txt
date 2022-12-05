@@ -209,3 +209,8 @@ openprompt=1.0.1=pypi_0
 openssl=1.1.1w=h7f8727e_0
 orjson=3.8.10=pypi_0
 packaging=23.1=pypi_0
+pandas=2.0.1=pypi_0
+pangu=4.0.6.1=pypi_0
+parameterized=0.9.0=pypi_0
+parso=0.8.3=pypi_0
+p
