@@ -216,4 +216,7 @@ parso=0.8.3=pypi_0
 pathspec=0.11.1=pypi_0
 pathtools=0.1.2=pypi_0
 peft=0.5.0=pypi_0
-p
+pexpect=4.8.0=pypi_0
+pickleshare=0.7.5=pypi_0
+pillow=9.4.0=py310h6a678d5_0
+pip=
