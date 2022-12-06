@@ -229,4 +229,7 @@ progress=1.6=pypi_0
 prompt-toolkit=3.0.38=pypi_0
 protobuf=3.20.3=pypi_0
 psutil=5.9.5=pypi_0
-ptyprocess=0.7.0=p
+ptyprocess=0.7.0=pypi_0
+pure-eval=0.2.2=pypi_0
+pyannote-core=5.0.0=pypi_0
+pyannote-database=5.0.1=pyp
