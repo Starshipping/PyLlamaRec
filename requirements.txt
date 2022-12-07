@@ -242,4 +242,7 @@ pybtex=0.24.0=pypi_0
 pybtex-docutils=1.0.2=pypi_0
 pycparser=2.21=pyhd3eb1b0_0
 pydantic=1.10.7=pypi_0
-pydepr
+pydeprecate=0.3.1=pypi_0
+pydub=0.25.1=pypi_0
+pygments=2.15.1=pypi_0
+pynini=2.1.
