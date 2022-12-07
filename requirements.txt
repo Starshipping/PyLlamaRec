@@ -235,4 +235,7 @@ pyannote-core=5.0.0=pypi_0
 pyannote-database=5.0.1=pypi_0
 pyannote-metrics=3.2.1=pypi_0
 pyarrow=11.0.0=pypi_0
-pyasn1=0.5.0=py
+pyasn1=0.5.0=pypi_0
+pyasn1-modules=0.3.0=pypi_0
+pybind11=2.10.4=pypi_0
+pybtex=0.24.0=pypi_0
