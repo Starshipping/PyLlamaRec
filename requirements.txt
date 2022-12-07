@@ -232,4 +232,7 @@ psutil=5.9.5=pypi_0
 ptyprocess=0.7.0=pypi_0
 pure-eval=0.2.2=pypi_0
 pyannote-core=5.0.0=pypi_0
-pyannote-database=5.0.1=pyp
+pyannote-database=5.0.1=pypi_0
+pyannote-metrics=3.2.1=pypi_0
+pyarrow=11.0.0=pypi_0
+pyasn1=0.5.0=py
