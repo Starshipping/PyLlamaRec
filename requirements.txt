@@ -239,3 +239,7 @@ pyasn1=0.5.0=pypi_0
 pyasn1-modules=0.3.0=pypi_0
 pybind11=2.10.4=pypi_0
 pybtex=0.24.0=pypi_0
+pybtex-docutils=1.0.2=pypi_0
+pycparser=2.21=pyhd3eb1b0_0
+pydantic=1.10.7=pypi_0
+pydepr
