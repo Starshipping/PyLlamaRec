@@ -263,4 +263,7 @@ pytorch-lightning=1.9.4=pypi_0
 pytorch-mutex=1.0=cuda
 pytz=2023.3=pypi_0
 pyyaml=5.4.1=pypi_0
-p
+pyzmq=25.1.0=pypi_0
+rank-bm25=0.2.2=pypi_0
+rapidfuzz=2.13.7=pypi_0
+readline=
