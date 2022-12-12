@@ -284,4 +284,6 @@ sacremoses=0.0.53=pypi_0
 safetensors=0.3.1=pypi_0
 scikit-learn=1.2.1=pypi_0
 scipy=1.10.1=pypi_0
-seabor
+seaborn=0.12.2=pypi_0
+semantic-version=2.10.0=pypi_0
+sentence-transfor
