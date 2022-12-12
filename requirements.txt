@@ -278,4 +278,7 @@ rouge-score=0.1.2=pypi_0
 rsa=4.9=pypi_0
 ruamel-yaml=0.17.32=pypi_0
 ruamel-yaml-clib=0.2.7=pypi_0
-s3transfer=
+s3transfer=0.6.1=pypi_0
+sacrebleu=2.3.1=pypi_0
+sacremoses=0.0.53=pypi_0
+safetensor
