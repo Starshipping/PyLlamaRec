@@ -302,4 +302,5 @@ soupsieve=2.4.1=pypi_0
 sox=1.4.1=pypi_0
 soxr=0.3.5=pypi_0
 sphinx=7.0.1=pypi_0
-sphin
+sphinxcontrib-applehelp=1.0.4=pypi_0
+sphinxcontrib-bibtex=2.5.0=pyp
