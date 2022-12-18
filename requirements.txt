@@ -308,4 +308,6 @@ sphinxcontrib-devhelp=1.0.2=pypi_0
 sphinxcontrib-htmlhelp=2.0.1=pypi_0
 sphinxcontrib-jsmath=1.0.1=pypi_0
 sphinxcontrib-qthelp=1.0.3=pypi_0
-sphin
+sphinxcontrib-serializinghtml=1.1.5=pypi_0
+sqlite=3.41.1=h5eee18b_0
+stack-data=0.6
