@@ -305,4 +305,7 @@ sphinx=7.0.1=pypi_0
 sphinxcontrib-applehelp=1.0.4=pypi_0
 sphinxcontrib-bibtex=2.5.0=pypi_0
 sphinxcontrib-devhelp=1.0.2=pypi_0
-sphinxcontrib-htmlhelp=2.0
+sphinxcontrib-htmlhelp=2.0.1=pypi_0
+sphinxcontrib-jsmath=1.0.1=pypi_0
+sphinxcontrib-qthelp=1.0.3=pypi_0
+sphin
