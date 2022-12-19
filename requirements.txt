@@ -314,4 +314,6 @@ stack-data=0.6.2=pypi_0
 starlette=0.26.1=pypi_0
 sympy=1.11.1=py310h06a4308_0
 tabulate=0.9.0=pypi_0
-tami
+taming-transformers=0.0.1=pypi_0
+taming-transformers-rom1504=0.0.6=pypi_0
+tensorboar
