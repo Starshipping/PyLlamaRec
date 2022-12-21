@@ -318,4 +318,7 @@ taming-transformers=0.0.1=pypi_0
 taming-transformers-rom1504=0.0.6=pypi_0
 tensorboard=2.12.2=pypi_0
 tensorboard-data-server=0.7.0=pypi_0
-tensorboard-plugin-wit=1.8.
+tensorboard-plugin-wit=1.8.1=pypi_0
+tensorboardx=2.6.2.2=pypi_0
+termcolor=2.2.0=pypi_0
+test-tube=0.7.5=pypi_
