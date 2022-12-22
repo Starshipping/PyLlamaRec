@@ -332,4 +332,7 @@ tokenizers=0.13.3=pypi_0
 toml=0.10.2=pypi_0
 tomli=2.0.1=pypi_0
 toolz=0.12.0=pypi_0
-torchaudio=2
+torchaudio=2.0.0=py310_cu118
+torchmetrics=0.11.4=pypi_0
+torchtriton=2.0.0=py310
+t
