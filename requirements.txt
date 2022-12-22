@@ -328,4 +328,8 @@ texterrors=0.4.4=pypi_0
 threadpoolctl=3.1.0=pypi_0
 tk=8.6.12=h1ccaba5_0
 tokenize-rt=5.0.0=pypi_0
-tokenizers=0.13.3
+tokenizers=0.13.3=pypi_0
+toml=0.10.2=pypi_0
+tomli=2.0.1=pypi_0
+toolz=0.12.0=pypi_0
+torchaudio=2
