@@ -335,4 +335,7 @@ toolz=0.12.0=pypi_0
 torchaudio=2.0.0=py310_cu118
 torchmetrics=0.11.4=pypi_0
 torchtriton=2.0.0=py310
-t
+torchvision=0.15.0=py310_cu118
+tornado=6.3.2=pypi_0
+tqdm=4.64.1=pypi_0
+traitle
