@@ -338,4 +338,7 @@ torchtriton=2.0.0=py310
 torchvision=0.15.0=py310_cu118
 tornado=6.3.2=pypi_0
 tqdm=4.64.1=pypi_0
-traitle
+traitlets=5.9.0=pypi_0
+transformers=4.33.3=pypi_0
+trl=0.7.1=pypi_0
+tweet-preprocessor=0
