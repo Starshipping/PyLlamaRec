@@ -357,4 +357,7 @@ websockets=11.0.2=pypi_0
 werkzeug=2.3.0=pypi_0
 wget=3.2=pypi_0
 wheel=0.38.4=py310h06a4308_0
-wid
+widgetsnbextension=4.0.7=pypi_0
+wrapt=1.15.0=pypi_0
+xxhash=3.2.0=pypi_0
+xz=5.2.10
