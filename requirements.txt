@@ -363,4 +363,6 @@ xxhash=3.2.0=pypi_0
 xz=5.2.10=h5eee18b_1
 yacs=0.1.8=pypi_0
 yarl=1.9.2=pypi_0
-youtokentome=1.0.6=py
+youtokentome=1.0.6=pypi_0
+zlib=1.2.13=h5eee18b_0
+zstd=1.5.4=hc292b87_0
