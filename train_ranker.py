@@ -14,4 +14,7 @@ from pytorch_lightning import seed_everything
 from model import LlamaForCausalLM
 from peft import (
     LoraConfig,
-    get_peft
+    get_peft_model,
+    get_peft_model_state_dict,
+    prepare_model_for_int8_training,
+    prepa
