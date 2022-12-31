@@ -17,4 +17,9 @@ from peft import (
     get_peft_model,
     get_peft_model_state_dict,
     prepare_model_for_int8_training,
-    prepa
+    prepare_model_for_kbit_training,
+)
+
+
+try:
+    os.environ['WANDB_PROJECT'] = PROJECT_NAME
