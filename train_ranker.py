@@ -24,4 +24,9 @@ from peft import (
 try:
     os.environ['WANDB_PROJECT'] = PROJECT_NAME
 except:
-    print('WANDB_PROJECT not available, please set it in config.py'
+    print('WANDB_PROJECT not available, please set it in config.py')
+
+
+def main(args, export_root=None):
+    seed_everything(args.seed)
+    i
