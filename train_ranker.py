@@ -23,3 +23,5 @@ from peft import (
 
 try:
     os.environ['WANDB_PROJECT'] = PROJECT_NAME
+except:
+    print('WANDB_PROJECT not available, please set it in config.py'
