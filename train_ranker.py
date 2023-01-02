@@ -29,4 +29,5 @@ except:
 
 def main(args, export_root=None):
     seed_everything(args.seed)
-    i
+    if export_root == None:
+        export_root = EXPERIMENT_ROOT + '/' + args.llm_bas
