@@ -30,4 +30,6 @@ except:
 def main(args, export_root=None):
     seed_everything(args.seed)
     if export_root == None:
-        export_root = EXPERIMENT_ROOT + '/' + args.llm_bas
+        export_root = EXPERIMENT_ROOT + '/' + args.llm_base_model.split('/')[-1] + '/' + args.dataset_code
+
+    train_loader, val
