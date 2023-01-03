@@ -32,4 +32,4 @@ def main(args, export_root=None):
     if export_root == None:
         export_root = EXPERIMENT_ROOT + '/' + args.llm_base_model.split('/')[-1] + '/' + args.dataset_code
 
-    train_loader, val
+    train_loader, val_loader, test_loader, tokenizer, test_retrieval = dataloade
