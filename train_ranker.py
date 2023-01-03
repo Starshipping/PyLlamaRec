@@ -34,4 +34,6 @@ def main(args, export_root=None):
 
     train_loader, val_loader, test_loader, tokenizer, test_retrieval = dataloader_factory(args)
     bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True
+        load_in_4bit=True,
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_quant_type="nf4"
