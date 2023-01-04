@@ -39,4 +39,6 @@ def main(args, export_root=None):
         bnb_4bit_quant_type="nf4",
         bnb_4bit_compute_dtype=torch.bfloat16
     )
-    model = LlamaForCau
+    model = LlamaForCausalLM.from_pretrained(
+        args.llm_base_model,
+        quantization_config=bnb_conf
