@@ -41,4 +41,8 @@ def main(args, export_root=None):
     )
     model = LlamaForCausalLM.from_pretrained(
         args.llm_base_model,
-        quantization_config=bnb_conf
+        quantization_config=bnb_config,
+        device_map='auto',
+        cache_dir=args.llm_cache_dir,
+    )
+    mode
