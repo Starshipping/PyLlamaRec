@@ -51,4 +51,7 @@ def main(args, export_root=None):
         r=args.lora_r,
         lora_alpha=args.lora_alpha,
         target_modules=args.lora_target_modules,
-        lora_dropou
+        lora_dropout=args.lora_dropout,
+        bias='none',
+        task_type="CAUSAL_LM",
+   
