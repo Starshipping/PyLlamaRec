@@ -45,4 +45,5 @@ def main(args, export_root=None):
         device_map='auto',
         cache_dir=args.llm_cache_dir,
     )
-    mode
+    model.gradient_checkpointing_enable()
+    model = prepare_model_for_kbit_t
