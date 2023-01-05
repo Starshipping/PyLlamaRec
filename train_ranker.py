@@ -46,4 +46,7 @@ def main(args, export_root=None):
         cache_dir=args.llm_cache_dir,
     )
     model.gradient_checkpointing_enable()
-    model = prepare_model_for_kbit_t
+    model = prepare_model_for_kbit_training(model)
+    config = LoraConfig(
+        r=args.lora_r,
+        lora_alpha=
