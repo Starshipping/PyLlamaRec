@@ -49,4 +49,6 @@ def main(args, export_root=None):
     model = prepare_model_for_kbit_training(model)
     config = LoraConfig(
         r=args.lora_r,
-        lora_alpha=
+        lora_alpha=args.lora_alpha,
+        target_modules=args.lora_target_modules,
+        lora_dropou
