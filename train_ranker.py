@@ -57,3 +57,6 @@ def main(args, export_root=None):
     )
     model = get_peft_model(model, config)
     model.print_trainable_parameters()
+
+    model.config.use_cache = False
+    trainer = LLMTrainer(args, mo
