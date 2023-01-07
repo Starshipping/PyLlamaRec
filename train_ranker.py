@@ -65,4 +65,7 @@ def main(args, export_root=None):
     trainer.test(test_retrieval)
 
 
-if __name__ 
+if __name__ == "__main__":
+    args.model_code = 'llm'
+    set_template(args)
+    main(args, 
