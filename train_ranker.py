@@ -59,4 +59,10 @@ def main(args, export_root=None):
     model.print_trainable_parameters()
 
     model.config.use_cache = False
-    trainer = LLMTrainer(args, model, train_loader, val_loader, test_loader, tokenizer, export_root, args.u
+    trainer = LLMTrainer(args, model, train_loader, val_loader, test_loader, tokenizer, export_root, args.use_wandb)
+    
+    trainer.train()
+    trainer.test(test_retrieval)
+
+
+if __name__ 
