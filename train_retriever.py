@@ -10,4 +10,9 @@ from model import *
 from dataloader import *
 from trainer import *
 
-from pytorch_lightning import seed_everyth
+from pytorch_lightning import seed_everything
+
+try:
+    os.environ['WANDB_PROJECT'] = PROJECT_NAME
+except:
+    print('WANDB_PROJECT no
