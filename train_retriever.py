@@ -7,4 +7,7 @@ import argparse
 
 from config import *
 from model import *
-f
+from dataloader import *
+from trainer import *
+
+from pytorch_lightning import seed_everyth
