@@ -15,4 +15,8 @@ from pytorch_lightning import seed_everything
 try:
     os.environ['WANDB_PROJECT'] = PROJECT_NAME
 except:
-    print('WANDB_PROJECT no
+    print('WANDB_PROJECT not available, please set it in config.py')
+
+
+def main(args, export_root=None):
+    
