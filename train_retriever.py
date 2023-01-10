@@ -19,4 +19,5 @@ except:
 
 
 def main(args, export_root=None):
-    
+    seed_everything(args.seed)
+    train_loader, val_loader, test_loader = dataloader_factory(a
