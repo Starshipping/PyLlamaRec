@@ -24,4 +24,5 @@ def main(args, export_root=None):
     model = LRURec(args)
     if export_root == None:
         export_root = EXPERIMENT_ROOT + '/' + args.model_code + '/' + args.dataset_code
-  
+    
+    trainer = LRUTrainer(args, model, train_loader, val_loader, test_
