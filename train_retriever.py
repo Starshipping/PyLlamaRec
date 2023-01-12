@@ -23,4 +23,5 @@ def main(args, export_root=None):
     train_loader, val_loader, test_loader = dataloader_factory(args)
     model = LRURec(args)
     if export_root == None:
-        export
+        export_root = EXPERIMENT_ROOT + '/' + args.model_code + '/' + args.dataset_code
+  
