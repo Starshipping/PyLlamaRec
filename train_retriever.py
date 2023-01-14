@@ -25,4 +25,6 @@ def main(args, export_root=None):
     if export_root == None:
         export_root = EXPERIMENT_ROOT + '/' + args.model_code + '/' + args.dataset_code
     
-    trainer = LRUTrainer(args, model, train_loader, val_loader, test_
+    trainer = LRUTrainer(args, model, train_loader, val_loader, test_loader, export_root, args.use_wandb)
+    trainer.train()
+    trainer.te
