@@ -30,3 +30,7 @@ def main(args, export_root=None):
     trainer.test()
 
     # the next line generates val / test candidates for reranking
+    trainer.generate_candidates(os.path.join(export_root, 'retrieved.pkl'))
+
+
+if
