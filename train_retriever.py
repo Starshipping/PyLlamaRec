@@ -33,4 +33,6 @@ def main(args, export_root=None):
     trainer.generate_candidates(os.path.join(export_root, 'retrieved.pkl'))
 
 
-if
+if __name__ == "__main__":
+    args.model_code = 'lru'
+    set_templat
