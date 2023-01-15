@@ -27,4 +27,6 @@ def main(args, export_root=None):
     
     trainer = LRUTrainer(args, model, train_loader, val_loader, test_loader, export_root, args.use_wandb)
     trainer.train()
-    trainer.te
+    trainer.test()
+
+    # the next line generates val / test candidates for reranking
