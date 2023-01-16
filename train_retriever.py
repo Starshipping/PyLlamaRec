@@ -35,4 +35,7 @@ def main(args, export_root=None):
 
 if __name__ == "__main__":
     args.model_code = 'lru'
-    set_templat
+    set_template(args)
+    main(args, export_root=None)
+
+    # # searching best
