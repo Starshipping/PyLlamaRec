@@ -38,4 +38,6 @@ if __name__ == "__main__":
     set_template(args)
     main(args, export_root=None)
 
-    # # searching best
+    # # searching best hyperparameters
+    # for decay in [0, 0.01]:
+    #     for d
