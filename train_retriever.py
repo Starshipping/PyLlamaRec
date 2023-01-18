@@ -45,4 +45,4 @@ if __name__ == "__main__":
     #         args.bert_dropout = dropout
     #         args.bert_attn_dropout = dropout
     #         export_root = EXPERIMENT_ROOT + '/' + args.model_code + '/' + args.dataset_code + '/' + str(decay) + '_' + str(dropout)
-    #        
+    #         main(args, export_root=export_root)
