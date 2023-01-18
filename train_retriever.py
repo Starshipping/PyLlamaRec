@@ -41,4 +41,6 @@ if __name__ == "__main__":
     # # searching best hyperparameters
     # for decay in [0, 0.01]:
     #     for dropout in [0, 0.1, 0.2, 0.3, 0.4, 0.5]:
-    #         args.weight_decay = de
+    #         args.weight_decay = decay
+    #         args.bert_dropout = dropout
+    #         args.bert_attn_d
