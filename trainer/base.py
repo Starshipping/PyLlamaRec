@@ -121,3 +121,71 @@ class BaseTrainer(metaclass=ABCMeta):
             }
             log_data.update(average_meter_set.averages())
         
+        return self.logger_service.log_val(log_data)  # early stopping
+
+    def test(self, epoch=-1, accum_iter=-1, save_name=None):
+        print('******************** Testing Best Model ********************')
+        best_model_dict = torch.load(os.path.join(
+            self.export_root, 'models', 'best_acc_model.pth')).get(STATE_DICT_KEY)
+        self.model.load_state_dict(best_model_dict)
+        self.model.eval()
+
+        average_meter_set = AverageMeterSet()
+        with torch.no_grad():
+            tqdm_dataloader = tqdm(self.test_loader)
+            for batch_idx, batch in enumerate(tqdm_dataloader):
+                batch = self.to_device(batch)
+                metrics = self.calculate_metrics(batch)
+                self._update_meter_set(average_meter_set, metrics)
+                self._update_dataloader_metrics(
+                    tqdm_dataloader, average_meter_set)
+
+            log_data = {
+                'state_dict': (self._create_state_dict()),
+                'epoch': epoch+1,
+                'accum_iter': accum_iter,
+            }
+            average_metrics = average_meter_set.averages()
+            log_data.update(average_metrics)
+            self.logger_service.log_test(log_data)
+
+            print('******************** Testing Metrics ********************')
+            print(average_metrics)
+            file_name = 'test_metrics.json' if save_name is None else save_name
+            with open(os.path.join(self.export_root, file_name), 'w') as f:
+                json.dump(average_metrics, f, indent=4)
+        
+        return average_metrics
+    
+    def to_device(self, batch):
+        return [x.to(self.device) for x in batch]
+
+    @abstractmethod
+    def calculate_loss(self, batch):
+        pass
+    
+    @abstractmethod
+    def calculate_metrics(self, batch):
+        pass
+    
+    def clip_gradients(self, limit=1.0):
+        nn.utils.clip_grad_norm_(self.model.parameters(), limit)
+
+    def _update_meter_set(self, meter_set, metrics):
+        for k, v in metrics.items():
+            meter_set.update(k, v)
+
+    def _update_dataloader_metrics(self, tqdm_dataloader, meter_set):
+        description_metrics = ['NDCG@%d' % k for k in self.metric_ks[:3]
+                               ] + ['Recall@%d' % k for k in self.metric_ks[:3]]
+        description = 'Eval: ' + \
+            ', '.join(s + ' {:.4f}' for s in description_metrics)
+        description = description.replace('NDCG', 'N').replace('Recall', 'R')
+        description = description.format(
+            *(meter_set[k].avg for k in description_metrics))
+        tqdm_dataloader.set_description(description)
+
+    def _create_optimizer(self):
+        args = self.args
+        param_optimizer = list(self.model.named_parameters())
+        no_decay = ['bias', 'layer_norm']
