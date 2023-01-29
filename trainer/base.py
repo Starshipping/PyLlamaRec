@@ -47,3 +47,77 @@ class BaseTrainer(metaclass=ABCMeta):
             import wandb
             wandb.init(
                 name=self.args.model_code+'_'+self.args.dataset_code,
+                project=PROJECT_NAME,
+                config=args,
+            )
+            writer = wandb
+        else:
+            from torch.utils.tensorboard import SummaryWriter
+            writer = SummaryWriter(
+                log_dir=Path(self.export_root).joinpath('logs'),
+                comment=self.args.model_code+'_'+self.args.dataset_code,
+            )
+        self.val_loggers, self.test_loggers = self._create_loggers()
+        self.logger_service = LoggerService(
+            self.args, writer, self.val_loggers, self.test_loggers, use_wandb)
+        
+        print(args)
+
+    def train(self):
+        accum_iter = 0
+        self.exit_training = self.validate(0, accum_iter)
+        for epoch in range(self.num_epochs):
+            accum_iter = self.train_one_epoch(epoch, accum_iter)
+            if self.args.val_strategy == 'epoch':
+                self.exit_training = self.validate(epoch, accum_iter)  # val after every epoch
+            if self.exit_training:
+                print('Early stopping triggered. Exit training')
+                break
+        self.logger_service.complete()
+
+    def train_one_epoch(self, epoch, accum_iter):
+        average_meter_set = AverageMeterSet()
+        tqdm_dataloader = tqdm(self.train_loader)
+
+        for batch_idx, batch in enumerate(tqdm_dataloader):
+            self.model.train()
+            batch = self.to_device(batch)
+
+            self.optimizer.zero_grad()
+            loss = self.calculate_loss(batch)
+            loss.backward()
+            self.clip_gradients(self.args.max_grad_norm)
+            self.optimizer.step()
+            if self.args.enable_lr_schedule:
+                self.lr_scheduler.step()
+
+            average_meter_set.update('loss', loss.item())
+            tqdm_dataloader.set_description(
+                'Epoch {}, loss {:.3f} '.format(epoch+1, average_meter_set['loss'].avg))
+
+            accum_iter += 1
+            if self.args.val_strategy == 'iteration' and accum_iter % self.args.val_iterations == 0:
+                self.exit_training = self.validate(epoch, accum_iter)  # val after certain iterations
+                if self.exit_training: break
+
+        return accum_iter
+
+    def validate(self, epoch, accum_iter):
+        self.model.eval()
+        average_meter_set = AverageMeterSet()
+        with torch.no_grad():
+            tqdm_dataloader = tqdm(self.val_loader)
+            for batch_idx, batch in enumerate(tqdm_dataloader):
+                batch = self.to_device(batch)
+                metrics = self.calculate_metrics(batch, exclude_history=False)  # faster validation
+                self._update_meter_set(average_meter_set, metrics)
+                self._update_dataloader_metrics(
+                    tqdm_dataloader, average_meter_set)
+
+            log_data = {
+                'state_dict': (self._create_state_dict()),
+                'epoch': epoch+1,
+                'accum_iter': accum_iter,
+            }
+            log_data.update(average_meter_set.averages())
+        
