@@ -90,3 +90,83 @@ class LLMTrainer(Trainer):
         self.llm_max_text_len = args.llm_max_text_len
         self.rerank_metric_ks = args.rerank_metric_ks
         self.verbalizer = ManualVerbalizer(
+            tokenizer=tokenizer,
+            prefix='',
+            post_log_softmax=False,
+            classes=list(range(args.llm_negative_sample_size+1)),
+            label_words={i: chr(ord('A')+i) for i in range(args.llm_negative_sample_size+1)},
+        )
+
+        hf_args = TrainingArguments(
+            per_device_train_batch_size=args.lora_micro_batch_size,
+            gradient_accumulation_steps=args.train_batch_size//args.lora_micro_batch_size,
+            warmup_steps=args.warmup_steps,
+            num_train_epochs=args.lora_num_epochs,
+            learning_rate=args.lora_lr,
+            bf16=True,
+            logging_steps=10,
+            optim="paged_adamw_32bit",
+            evaluation_strategy="steps",
+            save_strategy="steps",
+            eval_steps=args.lora_val_iterations,
+            save_steps=args.lora_val_iterations,
+            output_dir=export_root,
+            save_total_limit=3,
+            load_best_model_at_end=True,
+            ddp_find_unused_parameters=None,
+            group_by_length=False,
+            report_to="wandb" if use_wandb else None,
+            run_name=args.model_code+'_'+args.dataset_code if use_wandb else None,
+            metric_for_best_model=args.rerank_best_metric,
+            greater_is_better=True,
+        )
+        super().__init__(
+            model=model,
+            args=hf_args,
+            callbacks=[EarlyStoppingCallback(args.lora_early_stopping_patience)],
+            **kwargs)  # hf_args is now args
+
+        self.train_loader = train_loader
+        self.val_loader = val_loader
+        self.test_loader = test_loader
+        self.tokenizer = tokenizer
+        
+        self.train_loader.collate_fn = llama_collate_fn_w_truncation(self.llm_max_text_len, eval=False)
+        self.val_loader.collate_fn = llama_collate_fn_w_truncation(self.llm_max_text_len, eval=True)
+        self.test_loader.collate_fn = llama_collate_fn_w_truncation(self.llm_max_text_len, eval=True)
+        self.compute_metrics = compute_metrics_for_ks(self.rerank_metric_ks, self.verbalizer)
+
+        if len(self.label_names) == 0:
+            self.label_names = ['labels']  # for some reason label name is not set
+    
+    def test(self, test_retrieval):
+        average_metrics = self.predict(test_dataset=None).metrics
+        print('Ranking Performance on Subset:', average_metrics)
+        print('************************************************************')
+        with open(os.path.join(self.export_root, 'subset_metrics.json'), 'w') as f:
+                json.dump(average_metrics, f, indent=4)
+
+        print('Original Performance:', test_retrieval['original_metrics'])
+        print('************************************************************')
+        original_size = test_retrieval['original_size']
+        retrieval_size = test_retrieval['retrieval_size']
+        
+        overall_metrics = {}
+        for key in test_retrieval['non_retrieval_metrics'].keys():
+            if 'test_' + key in average_metrics:
+                overall_metrics['test_' + key] = (average_metrics['test_' + key] * retrieval_size  + \
+                    test_retrieval['non_retrieval_metrics'][key] * (original_size - retrieval_size)) / original_size
+        print('Overall Performance of Our Framework:', overall_metrics)
+        with open(os.path.join(self.export_root, 'overall_metrics.json'), 'w') as f:
+                json.dump(overall_metrics, f, indent=4)
+        
+        return average_metrics
+
+    def get_train_dataloader(self):
+        return self.train_loader
+    
+    def get_eval_dataloader(self, eval_dataset: Optional[Dataset] = None) -> DataLoader:
+        return self.val_loader
+    
+    def get_test_dataloader(self, test_dataset: Optional[Dataset] = None) -> DataLoader:
+        return self.test_loader
