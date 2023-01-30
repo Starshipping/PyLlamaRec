@@ -189,3 +189,58 @@ class BaseTrainer(metaclass=ABCMeta):
         args = self.args
         param_optimizer = list(self.model.named_parameters())
         no_decay = ['bias', 'layer_norm']
+        optimizer_grouped_parameters = [
+            {
+                'params': [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
+                'weight_decay': args.weight_decay,
+            },
+            {'params': [p for n, p in param_optimizer if any(nd in n for nd in no_decay)], 'weight_decay': 0.},
+        ]
+        if args.optimizer.lower() == 'adamw':
+            return optim.AdamW(optimizer_grouped_parameters, lr=args.lr, eps=args.adam_epsilon)
+        elif args.optimizer.lower() == 'adam':
+            return optim.Adam(optimizer_grouped_parameters, lr=args.lr, weight_decay=args.weight_decay)
+        else:
+            raise NotImplementedError
+
+    def get_linear_schedule_with_warmup(self, optimizer, num_warmup_steps, num_training_steps, last_epoch=-1):
+        def lr_lambda(current_step: int):
+            if current_step < num_warmup_steps:
+                return float(current_step) / float(max(1, num_warmup_steps))
+            return max(
+                0.0, float(num_training_steps - current_step) / float(max(1, num_training_steps - num_warmup_steps))
+            )
+
+        return LambdaLR(optimizer, lr_lambda, last_epoch)
+
+    def _create_loggers(self):
+        root = Path(self.export_root)
+        model_checkpoint = root.joinpath('models')
+
+        val_loggers, test_loggers = [], []
+        for k in self.metric_ks:
+            val_loggers.append(
+                MetricGraphPrinter(key='Recall@%d' % k, graph_name='Recall@%d' % k, group_name='Validation', use_wandb=self.use_wandb))
+            val_loggers.append(
+                MetricGraphPrinter(key='NDCG@%d' % k, graph_name='NDCG@%d' % k, group_name='Validation', use_wandb=self.use_wandb))
+            val_loggers.append(
+                MetricGraphPrinter(key='MRR@%d' % k, graph_name='MRR@%d' % k, group_name='Validation', use_wandb=self.use_wandb))
+
+        val_loggers.append(RecentModelLogger(self.args, model_checkpoint))
+        val_loggers.append(BestModelLogger(self.args, model_checkpoint, metric_key=self.best_metric))
+
+        for k in self.metric_ks:
+            test_loggers.append(
+                MetricGraphPrinter(key='Recall@%d' % k, graph_name='Recall@%d' % k, group_name='Test', use_wandb=self.use_wandb))
+            test_loggers.append(
+                MetricGraphPrinter(key='NDCG@%d' % k, graph_name='NDCG@%d' % k, group_name='Test', use_wandb=self.use_wandb))
+            test_loggers.append(
+                MetricGraphPrinter(key='MRR@%d' % k, graph_name='MRR@%d' % k, group_name='Test', use_wandb=self.use_wandb))
+
+        return val_loggers, test_loggers
+
+    def _create_state_dict(self):
+        return {
+            STATE_DICT_KEY: self.model.state_dict(),
+            OPTIMIZER_STATE_DICT_KEY: self.optimizer.state_dict(),
+        }
