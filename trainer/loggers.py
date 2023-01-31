@@ -96,3 +96,18 @@ class BestModelLogger(AbstractBaseLogger):
 
         self.best_metric = 0.
         self.metric_key = metric_key
+        self.filename = filename
+        self.patience_counter = 0
+
+    def log(self, *args, **kwargs):
+        current_metric = kwargs[self.metric_key]
+        if self.best_metric < current_metric:  # assumes the higher the better
+            print("Update Best {} Model at {}".format(
+                self.metric_key, kwargs['epoch']))
+            self.best_metric = current_metric
+            save_state_dict(kwargs['state_dict'],
+                            self.checkpoint_path, self.filename)
+            if self.args.early_stopping:
+                self.patience_counter = 0
+        elif self.args.early_stopping:
+            self.patience_counter += 1
