@@ -3,4 +3,7 @@ from .utils import *
 from .loggers import *
 from .base import *
 
+import torch
+import torch.nn as nn
+import torch.optim as optim
 import
