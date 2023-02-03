@@ -16,4 +16,5 @@ from pathlib import Path
 
 
 class LRUTrainer(BaseTrainer):
-    def __init__(self, args, model, train_loader, val_loader, test_loader, exp
+    def __init__(self, args, model, train_loader, val_loader, test_loader, export_root, use_wandb):
+        super().__init__(args, model, train_loader, val_loa
