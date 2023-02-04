@@ -21,3 +21,6 @@ class LRUTrainer(BaseTrainer):
         self.ce = nn.CrossEntropyLoss(ignore_index=0)
     
     def calculate_loss(self, batch):
+        seqs, labels = batch
+        logits = self.model(seqs)
+        logi
