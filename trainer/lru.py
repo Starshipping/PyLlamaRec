@@ -25,4 +25,7 @@ class LRUTrainer(BaseTrainer):
         logits = self.model(seqs)
         logits = logits.view(-1, logits.size(-1))
         labels = labels.view(-1)
-      
+        loss = self.ce(logits, labels)
+        return loss
+
+    def calculate_metrics(self, 
