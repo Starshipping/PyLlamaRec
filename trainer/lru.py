@@ -28,4 +28,7 @@ class LRUTrainer(BaseTrainer):
         loss = self.ce(logits, labels)
         return loss
 
-    def calculate_metrics(self, 
+    def calculate_metrics(self, batch, exclude_history=True):
+        seqs, labels = batch
+        
+   
