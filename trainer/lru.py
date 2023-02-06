@@ -31,4 +31,6 @@ class LRUTrainer(BaseTrainer):
     def calculate_metrics(self, batch, exclude_history=True):
         seqs, labels = batch
         
-   
+        scores = self.model(seqs)[:, -1, :]
+        B, L = seqs.shape
+        if 
