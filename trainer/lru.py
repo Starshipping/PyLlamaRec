@@ -33,4 +33,6 @@ class LRUTrainer(BaseTrainer):
         
         scores = self.model(seqs)[:, -1, :]
         B, L = seqs.shape
-        if 
+        if exclude_history:
+            for i in range(L):
+             
