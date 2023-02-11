@@ -36,4 +36,5 @@ class LRUTrainer(BaseTrainer):
         if exclude_history:
             for i in range(L):
                 scores[torch.arange(scores.size(0)), seqs[:, i]] = -1e9
-           
+            scores[:, 0] = -1e9  # padding
+        metrics = absolute_recall_mrr_ndcg_for_ks(sco
