@@ -40,4 +40,6 @@ class LRUTrainer(BaseTrainer):
         metrics = absolute_recall_mrr_ndcg_for_ks(scores, labels.view(-1), self.metric_ks)
         return metrics
     
-    def generate
+    def generate_candidates(self, retrieved_data_path):
+        self.model.eval()
+ 
