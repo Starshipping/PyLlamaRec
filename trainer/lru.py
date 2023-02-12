@@ -42,4 +42,6 @@ class LRUTrainer(BaseTrainer):
     
     def generate_candidates(self, retrieved_data_path):
         self.model.eval()
- 
+        val_probs, val_labels = [], []
+        test_probs, test_labels = [], []
+  
