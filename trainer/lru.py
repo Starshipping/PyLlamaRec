@@ -44,4 +44,5 @@ class LRUTrainer(BaseTrainer):
         self.model.eval()
         val_probs, val_labels = [], []
         test_probs, test_labels = [], []
-  
+        with torch.no_grad():
+            print('*************** Generating Candida
