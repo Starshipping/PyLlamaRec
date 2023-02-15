@@ -45,4 +45,5 @@ class LRUTrainer(BaseTrainer):
         val_probs, val_labels = [], []
         test_probs, test_labels = [], []
         with torch.no_grad():
-            print('*************** Generating Candida
+            print('*************** Generating Candidates for Validation Set ***************')
+            tqdm_dataloader = tqdm(self.val_load
