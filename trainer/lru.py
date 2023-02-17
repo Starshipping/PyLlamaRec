@@ -49,4 +49,7 @@ class LRUTrainer(BaseTrainer):
             tqdm_dataloader = tqdm(self.val_loader)
             for batch_idx, batch in enumerate(tqdm_dataloader):
                 batch = self.to_device(batch)
-                seqs, labels = ba
+                seqs, labels = batch
+        
+                scores = self.model(seqs)[:, -1, :]
+    
