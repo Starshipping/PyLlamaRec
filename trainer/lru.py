@@ -47,4 +47,6 @@ class LRUTrainer(BaseTrainer):
         with torch.no_grad():
             print('*************** Generating Candidates for Validation Set ***************')
             tqdm_dataloader = tqdm(self.val_loader)
-            for batch_idx, batch in enumerate(tqdm_dataloade
+            for batch_idx, batch in enumerate(tqdm_dataloader):
+                batch = self.to_device(batch)
+                seqs, labels = ba
