@@ -54,4 +54,5 @@ class LRUTrainer(BaseTrainer):
                 scores = self.model(seqs)[:, -1, :]
                 B, L = seqs.shape
                 for i in range(L):
-                 
+                    scores[torch.arange(scores.size(0)), seqs[:, i]] = -1e9
+             
