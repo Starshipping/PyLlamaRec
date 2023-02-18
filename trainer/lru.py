@@ -56,4 +56,6 @@ class LRUTrainer(BaseTrainer):
                 for i in range(L):
                     scores[torch.arange(scores.size(0)), seqs[:, i]] = -1e9
                 scores[:, 0] = -1e9  # padding
-                val_probs.extend(scores.toli
+                val_probs.extend(scores.tolist())
+                val_labels.extend(labels.view(-1).tolist())
+   
