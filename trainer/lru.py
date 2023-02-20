@@ -58,4 +58,5 @@ class LRUTrainer(BaseTrainer):
                 scores[:, 0] = -1e9  # padding
                 val_probs.extend(scores.tolist())
                 val_labels.extend(labels.view(-1).tolist())
-            val_metrics = absolute_recall_mrr_ndcg_for_ks(torch.tensor
+            val_metrics = absolute_recall_mrr_ndcg_for_ks(torch.tensor(val_probs), 
+                                                          torch.tensor(val
