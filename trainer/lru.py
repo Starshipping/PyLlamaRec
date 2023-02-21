@@ -62,4 +62,4 @@ class LRUTrainer(BaseTrainer):
                                                           torch.tensor(val_labels).view(-1), self.metric_ks)
             print(val_metrics)
 
-          
+            print('****************** Generating Candidates for Test Set *******
