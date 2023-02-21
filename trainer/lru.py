@@ -62,4 +62,5 @@ class LRUTrainer(BaseTrainer):
                                                           torch.tensor(val_labels).view(-1), self.metric_ks)
             print(val_metrics)
 
-            print('****************** Generating Candidates for Test Set *******
+            print('****************** Generating Candidates for Test Set ******************')
+            tqdm_dataloader = tqdm(self.test_loader)
