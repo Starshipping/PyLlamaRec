@@ -64,3 +64,5 @@ class LRUTrainer(BaseTrainer):
 
             print('****************** Generating Candidates for Test Set ******************')
             tqdm_dataloader = tqdm(self.test_loader)
+            for batch_idx, batch in enumerate(tqdm_dataloader):
+                
