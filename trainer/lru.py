@@ -68,4 +68,5 @@ class LRUTrainer(BaseTrainer):
                 batch = self.to_device(batch)
                 seqs, labels = batch
         
-    
+                scores = self.model(seqs)[:, -1, :]
+                B, L = s
