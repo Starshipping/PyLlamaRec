@@ -74,3 +74,5 @@ class LRUTrainer(BaseTrainer):
                     scores[torch.arange(scores.size(0)), seqs[:, i]] = -1e9
                 scores[:, 0] = -1e9  # padding
                 test_probs.extend(scores.tolist())
+                test_labels.extend(labels.view(-1).tolist())
+            tes
