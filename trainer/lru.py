@@ -76,4 +76,4 @@ class LRUTrainer(BaseTrainer):
                 test_probs.extend(scores.tolist())
                 test_labels.extend(labels.view(-1).tolist())
             test_metrics = absolute_recall_mrr_ndcg_for_ks(torch.tensor(test_probs), 
-        
+                                                           torch.tensor(test_labels).vi
