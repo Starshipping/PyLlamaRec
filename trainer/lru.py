@@ -79,4 +79,6 @@ class LRUTrainer(BaseTrainer):
                                                            torch.tensor(test_labels).view(-1), self.metric_ks)
             print(test_metrics)
 
-        with open(retrieved_data_path,
+        with open(retrieved_data_path, 'wb') as f:
+            pickle.dump({'val_probs': val_probs,
+            
