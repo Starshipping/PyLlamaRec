@@ -81,4 +81,5 @@ class LRUTrainer(BaseTrainer):
 
         with open(retrieved_data_path, 'wb') as f:
             pickle.dump({'val_probs': val_probs,
-            
+                         'val_labels': val_labels,
+                         'val_me
