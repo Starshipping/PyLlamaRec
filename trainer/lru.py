@@ -83,4 +83,6 @@ class LRUTrainer(BaseTrainer):
             pickle.dump({'val_probs': val_probs,
                          'val_labels': val_labels,
                          'val_metrics': val_metrics,
-                         'test_probs': test
+                         'test_probs': test_probs,
+                         'test_labels': test_labels,
+              
