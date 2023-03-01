@@ -85,4 +85,4 @@ class LRUTrainer(BaseTrainer):
                          'val_metrics': val_metrics,
                          'test_probs': test_probs,
                          'test_labels': test_labels,
-              
+                         'test_metrics': test_metrics}, f)
