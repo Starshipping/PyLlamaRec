@@ -54,3 +54,70 @@ def signature(f):
         p.name for p in sig.parameters.values()
         if p.kind == inspect.Parameter.VAR_POSITIONAL
     ]
+    varargs = varargs[0] if varargs else None
+    keywords = [
+        p.name for p in sig.parameters.values()
+        if p.kind == inspect.Parameter.VAR_KEYWORD
+    ]
+    keywords = keywords[0] if keywords else None
+    defaults = [
+        p.default for p in sig.parameters.values()
+        if p.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD
+        and p.default is not p.empty
+    ] or None
+    argspec = namedtuple('Signature', ['args', 'defaults',
+                                        'varargs', 'keywords'])
+    return argspec(args, defaults, varargs, keywords) 
+
+
+class Verbalizer(nn.Module):
+    r'''
+    Base class for all the verbalizers.
+
+    Args:
+        tokenizer (:obj:`PreTrainedTokenizer`): A tokenizer to appoint the vocabulary and the tokenization strategy.
+        classes (:obj:`Sequence[str]`): A sequence of classes that need to be projected.
+    '''
+    def __init__(self,
+                 tokenizer: Optional[PreTrainedTokenizer] = None,
+                 classes: Optional[Sequence[str]] = None,
+                 num_classes: Optional[int] = None,
+                ):
+        super().__init__()
+        self.tokenizer = tokenizer
+        self.classes = classes
+        if classes is not None and num_classes is not None:
+            assert len(classes) == num_classes, "len(classes) != num_classes, Check you config."
+            self.num_classes = num_classes
+        elif num_classes is not None:
+            self.num_classes = num_classes
+        elif classes is not None:
+            self.num_classes = len(classes)
+        else:
+            self.num_classes = None
+            # raise AttributeError("No able to configure num_classes")
+        self._in_on_label_words_set = False
+
+    @property
+    def label_words(self,):
+        r'''
+        Label words means the words in the vocabulary projected by the labels.
+        E.g. if we want to establish a projection in sentiment classification: positive :math:`\rightarrow` {`wonderful`, `good`},
+        in this case, `wonderful` and `good` are label words.
+        '''
+        if not hasattr(self, "_label_words"):
+            raise RuntimeError("label words haven't been set.")
+        return self._label_words
+
+    @label_words.setter
+    def label_words(self, label_words):
+        if label_words is None:
+            return
+        self._label_words = self._match_label_words_to_label_ids(label_words)
+        if not self._in_on_label_words_set:
+            self.safe_on_label_words_set()
+
+    def _match_label_words_to_label_ids(self, label_words): # TODO newly add function after docs written # TODO rename this function
+        """
+        sort label words dict of verbalizer to match the label order of the classes
+        """
