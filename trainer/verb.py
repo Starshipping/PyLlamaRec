@@ -278,3 +278,79 @@ class Verbalizer(nn.Module):
             label_words_logits = label_words_logits.max(dim=-1).values
         elif self.multi_token_handler == "mean":
             label_words_logits = (label_words_logits*mask.unsqueeze(0)).sum(dim=-1)/(mask.unsqueeze(0).sum(dim=-1)+1e-15)
+        else:
+            raise ValueError("multi_token_handler {} not configured".format(self.multi_token_handler))
+        return label_words_logits
+
+    @classmethod
+    def from_config(cls,
+                    config: CfgNode,
+                    **kwargs):
+        r"""load a verbalizer from verbalizer's configuration node.
+
+        Args:
+            config (:obj:`CfgNode`): the sub-configuration of verbalizer, i.e. ``config[config.verbalizer]``
+                        if config is a global config node.
+            kwargs: Other kwargs that might be used in initialize the verbalizer.
+                    The actual value should match the arguments of ``__init__`` functions.
+        """
+
+        init_args = signature(cls.__init__).args
+        _init_dict = {**convert_cfg_to_dict(config), **kwargs} if config is not None else kwargs
+        init_dict = {key: _init_dict[key] for key in _init_dict if key in init_args}
+        verbalizer = cls(**init_dict)
+        if hasattr(verbalizer, "from_file"):
+            if not hasattr(config, "file_path"):
+                pass
+            else:
+                if (not hasattr(config, "label_words") or config.label_words is None) and config.file_path is not None:
+                    if config.choice is None:
+                        config.choice = 0
+                    verbalizer.from_file(config.file_path, config.choice)
+                elif (hasattr(config, "label_words") and config.label_words is not None) and config.file_path is not None:
+                    raise RuntimeError("The text can't be both set from `text` and `file_path`.")
+        return verbalizer
+
+    def from_file(self,
+                  path: str,
+                  choice: Optional[int] = 0 ):
+        r"""Load the predefined label words from verbalizer file.
+        Currently support three types of file format:
+        1. a .jsonl or .json file, in which is a single verbalizer
+        in dict format.
+        2. a .jsonal or .json file, in which is a list of verbalizers in dict format
+        3.  a .txt or a .csv file, in which is the label words of a class are listed in line,
+        separated by commas. Begin a new verbalizer by an empty line.
+        This format is recommended when you don't know the name of each class.
+
+        The details of verbalizer format can be seen in :ref:`How_to_write_a_verbalizer`.
+
+        Args:
+            path (:obj:`str`): The path of the local template file.
+            choice (:obj:`int`): The choice of verbalizer in a file containing
+                             multiple verbalizers.
+
+        Returns:
+            Template : `self` object
+        """
+        if path.endswith(".txt") or path.endswith(".csv"):
+            with open(path, 'r') as f:
+                lines = f.readlines()
+                label_words_all = []
+                label_words_single_group = []
+                for line in lines:
+                    line = line.strip().strip(" ")
+                    if line == "":
+                        if len(label_words_single_group)>0:
+                            label_words_all.append(label_words_single_group)
+                        label_words_single_group = []
+                    else:
+                        label_words_single_group.append(line)
+                if len(label_words_single_group) > 0: # if no empty line in the last
+                    label_words_all.append(label_words_single_group)
+                if choice >= len(label_words_all):
+                    raise RuntimeError("choice {} exceed the number of verbalizers {}"
+                                .format(choice, len(label_words_all)))
+
+                label_words = label_words_all[choice]
+                label_words = [label_words_per_label.strip().split(",") \
