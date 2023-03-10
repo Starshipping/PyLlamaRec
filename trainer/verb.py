@@ -354,3 +354,66 @@ class Verbalizer(nn.Module):
 
                 label_words = label_words_all[choice]
                 label_words = [label_words_per_label.strip().split(",") \
+                            for label_words_per_label in label_words]
+
+        elif path.endswith(".jsonl") or path.endswith(".json"):
+            with open(path, "r") as f:
+                label_words_all = json.load(f)
+                # if it is a file containing multiple verbalizers
+                if isinstance(label_words_all, list):
+                    if choice >= len(label_words_all):
+                        raise RuntimeError("choice {} exceed the number of verbalizers {}"
+                                .format(choice, len(label_words_all)))
+                    label_words = label_words_all[choice]
+                elif isinstance(label_words_all, dict):
+                    label_words = label_words_all
+                    if choice>0:
+                        print("Choice of verbalizer is 1, but the file  \
+                        only contains one verbalizer.")
+
+        self.label_words = label_words
+        if self.num_classes is not None:
+            num_classes = len(self.label_words)
+            assert num_classes==self.num_classes, 'number of classes in the verbalizer file\
+                                            does not match the predefined num_classes.'
+        return self
+
+
+class ManualVerbalizer(Verbalizer):
+    r"""
+    The basic manually defined verbalizer class, this class is inherited from the :obj:`Verbalizer` class.
+
+    Args:
+        tokenizer (:obj:`PreTrainedTokenizer`): The tokenizer of the current pre-trained model to point out the vocabulary.
+        classes (:obj:`List[Any]`): The classes (or labels) of the current task.
+        label_words (:obj:`Union[List[str], List[List[str]], Dict[List[str]]]`, optional): The label words that are projected by the labels.
+        prefix (:obj:`str`, optional): The prefix string of the verbalizer (used in PLMs like RoBERTa, which is sensitive to prefix space)
+        multi_token_handler (:obj:`str`, optional): The handling strategy for multiple tokens produced by the tokenizer.
+        post_log_softmax (:obj:`bool`, optional): Whether to apply log softmax post processing on label_logits. Default to True.
+    """
+    def __init__(self,
+                 tokenizer: PreTrainedTokenizer,
+                 classes: Optional[List] = None,
+                 num_classes: Optional[Sequence[str]] = None,
+                 label_words: Optional[Union[Sequence[str], Mapping[str, str]]] = None,
+                 prefix: Optional[str] = " ",
+                 multi_token_handler: Optional[str] = "first",
+                 post_log_softmax: Optional[bool] = True,
+                ):
+        super().__init__(tokenizer=tokenizer, num_classes=num_classes, classes=classes)
+        self.prefix = prefix
+        self.multi_token_handler = multi_token_handler
+        self.label_words = label_words
+        self.post_log_softmax = post_log_softmax
+
+    def on_label_words_set(self):
+        super().on_label_words_set()
+        self.label_words = self.add_prefix(self.label_words, self.prefix)
+
+         # TODO should Verbalizer base class has label_words property and setter?
+         # it don't have label_words init argument or label words from_file option at all
+
+        self.generate_parameters()
+
+    @staticmethod
+    def add_prefix(label_words, prefix):
