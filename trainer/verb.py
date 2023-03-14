@@ -417,3 +417,72 @@ class ManualVerbalizer(Verbalizer):
 
     @staticmethod
     def add_prefix(label_words, prefix):
+        r"""Add prefix to label words. For example, if a label words is in the middle of a template,
+        the prefix should be ``' '``.
+
+        Args:
+            label_words (:obj:`Union[Sequence[str], Mapping[str, str]]`, optional): The label words that are projected by the labels.
+            prefix (:obj:`str`, optional): The prefix string of the verbalizer.
+
+        Returns:
+            :obj:`Sequence[str]`: New label words with prefix.
+        """
+        new_label_words = []
+        if isinstance(label_words[0], str):
+            label_words = [[w] for w in label_words]  #wrapped it to a list of list of label words.
+
+        for label_words_per_label in label_words:
+            new_label_words_per_label = []
+            for word in label_words_per_label:
+                if word.startswith("<!>"):
+                    new_label_words_per_label.append(word.split("<!>")[1])
+                else:
+                    new_label_words_per_label.append(prefix + word)
+            new_label_words.append(new_label_words_per_label)
+        return new_label_words
+
+    def generate_parameters(self) -> List:
+        r"""In basic manual template, the parameters are generated from label words directly.
+        In this implementation, the label_words should not be tokenized into more than one token.
+        """
+        all_ids = []
+        for words_per_label in self.label_words:
+            ids_per_label = []
+            for word in words_per_label:
+                ids = self.tokenizer.encode(word, add_special_tokens=False)
+                ids_per_label.append(ids)
+            all_ids.append(ids_per_label)
+
+        max_len  = max([max([len(ids) for ids in ids_per_label]) for ids_per_label in all_ids])
+        max_num_label_words = max([len(ids_per_label) for ids_per_label in all_ids])
+        words_ids_mask = torch.zeros(max_num_label_words, max_len)
+        words_ids_mask = [[[1]*len(ids) + [0]*(max_len-len(ids)) for ids in ids_per_label]
+                             + [[0]*max_len]*(max_num_label_words-len(ids_per_label))
+                             for ids_per_label in all_ids]
+        words_ids = [[ids + [0]*(max_len-len(ids)) for ids in ids_per_label]
+                             + [[0]*max_len]*(max_num_label_words-len(ids_per_label))
+                             for ids_per_label in all_ids]
+
+        words_ids_tensor = torch.tensor(words_ids)
+        words_ids_mask = torch.tensor(words_ids_mask)
+        self.label_words_ids = nn.Parameter(words_ids_tensor, requires_grad=False)
+        self.words_ids_mask = nn.Parameter(words_ids_mask, requires_grad=False) # A 3-d mask
+        self.label_words_mask = nn.Parameter(torch.clamp(words_ids_mask.sum(dim=-1), max=1), requires_grad=False)
+
+    def project(self,
+                logits: torch.Tensor,
+                **kwargs,
+                ) -> torch.Tensor:
+        r"""
+        Project the labels, the return value is the normalized (sum to 1) probs of label words.
+
+        Args:
+            logits (:obj:`torch.Tensor`): The original logits of label words.
+
+        Returns:
+            :obj:`torch.Tensor`: The normalized logits of label words
+        """
+
+        label_words_logits = logits[:, self.label_words_ids]
+        label_words_logits = self.handle_multi_token(label_words_logits, self.words_ids_mask)
+        label_words_logits -= 10000*(1-self.label_words_mask)
