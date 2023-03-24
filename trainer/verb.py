@@ -486,3 +486,90 @@ class ManualVerbalizer(Verbalizer):
         label_words_logits = logits[:, self.label_words_ids]
         label_words_logits = self.handle_multi_token(label_words_logits, self.words_ids_mask)
         label_words_logits -= 10000*(1-self.label_words_mask)
+        return label_words_logits
+
+    def process_logits(self, logits: torch.Tensor, **kwargs):
+        r"""A whole framework to process the original logits over the vocabulary, which contains four steps:
+
+        (1) Project the logits into logits of label words
+
+        if self.post_log_softmax is True:
+
+            (2) Normalize over all label words
+
+            (3) Calibrate (optional)
+
+        (4) Aggregate (for multiple label words)
+
+        Args:
+            logits (:obj:`torch.Tensor`): The original logits.
+
+        Returns:
+            (:obj:`torch.Tensor`): The final processed logits over the labels (classes).
+        """
+        # project
+        label_words_logits = self.project(logits, **kwargs)  #Output: (batch_size, num_classes) or  (batch_size, num_classes, num_label_words_per_label)
+
+
+        if self.post_log_softmax:
+            # normalize
+            label_words_probs = self.normalize(label_words_logits)
+
+            # calibrate
+            if  hasattr(self, "_calibrate_logits") and self._calibrate_logits is not None:
+                label_words_probs = self.calibrate(label_words_probs=label_words_probs)
+
+            # convert to logits
+            label_words_logits = torch.log(label_words_probs+1e-15)
+
+        # aggregate
+        label_logits = self.aggregate(label_words_logits)
+        return label_logits
+
+    def normalize(self, logits: torch.Tensor) -> torch.Tensor:
+        """
+        Given logits regarding the entire vocabulary, return the probs over the label words set.
+
+        Args:
+            logits (:obj:`Tensor`): The logits over the entire vocabulary.
+
+        Returns:
+            :obj:`Tensor`: The logits over the label words set.
+
+        """
+        batch_size = logits.shape[0]
+        return F.softmax(logits.reshape(batch_size, -1), dim=-1).reshape(*logits.shape)
+
+
+    def aggregate(self, label_words_logits: torch.Tensor) -> torch.Tensor:
+        r"""Use weight to aggregate the logits of label words.
+
+        Args:
+            label_words_logits(:obj:`torch.Tensor`): The logits of the label words.
+
+        Returns:
+            :obj:`torch.Tensor`: The aggregated logits from the label words.
+        """
+        label_words_logits = (label_words_logits * self.label_words_mask).sum(-1)/self.label_words_mask.sum(-1)
+        return label_words_logits
+
+    def calibrate(self, label_words_probs: torch.Tensor, **kwargs) -> torch.Tensor:
+        r"""
+
+        Args:
+            label_words_probs (:obj:`torch.Tensor`): The probability distribution of the label words with the shape of [``batch_size``, ``num_classes``, ``num_label_words_per_class``]
+
+        Returns:
+            :obj:`torch.Tensor`: The calibrated probability of label words.
+        """
+        shape = label_words_probs.shape
+        assert self._calibrate_logits.dim() ==  1, "self._calibrate_logits are not 1-d tensor"
+        calibrate_label_words_probs = self.normalize(self.project(self._calibrate_logits.unsqueeze(0), **kwargs))
+        assert calibrate_label_words_probs.shape[1:] == label_words_probs.shape[1:] \
+             and calibrate_label_words_probs.shape[0]==1, "shape not match"
+        label_words_probs /= (calibrate_label_words_probs+1e-15)
+        # normalize # TODO Test the performance
+        norm = label_words_probs.reshape(shape[0], -1).sum(dim=-1,keepdim=True) # TODO Test the performance of detaching()
+        label_words_probs = label_words_probs.reshape(shape[0], -1) / norm
+        label_words_probs = label_words_probs.reshape(*shape)
+        return label_words_probs
